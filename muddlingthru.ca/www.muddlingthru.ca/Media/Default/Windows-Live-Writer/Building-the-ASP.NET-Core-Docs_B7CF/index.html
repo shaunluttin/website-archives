@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from www.muddlingthru.ca/Media/Default/Windows-Live-Writer/Building-the-ASP.NET-Core-Docs_B7CF/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:19:45 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ASP.NET Core Documentation &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.html"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.html" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom1bce.html?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="#"/>
+        <link rel="next" title="Getting Started" href="getting-started.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.html"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://www.muddlingthru.ca/Media/Default/Windows-Live-Writer/Building-the-ASP.NET-Core-Docs_B7CF/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>ASP.NET Core Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.html" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="asp-net-core-documentation">
+<span id="index"></span><h1>ASP.NET Core Documentation<a class="headerlink" href="#asp-net-core-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">ASP.NET 5 has been renamed to ASP.NET Core 1.0. Read <a class="reference external" href="https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/">more</a>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is a work in progress. Topics marked with a 🔧 are placeholders that have not been written yet. You can track the status of these topics through our public documentation <a class="reference external" href="https://github.com/aspnet/docs/issues">issue tracker</a>. Learn how you can <a class="reference external" href="https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md">contribute</a> on GitHub.</p>
+</div>
+<div class="section" id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/first-mvc-app/index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/adding-controller.html">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/adding-view.html">Adding a view</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/adding-model.html">Adding a model</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/working-with-sql.html">Working with SQL Server LocalDB</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/controller-methods-views.html">Controller methods and views</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/search.html">Adding Search</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/new-field.html">Adding a New Field</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/validation.html">Adding Validation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-mvc-app/details.html">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nano-server.html">ASP.NET Core on Nano Server</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-overview/index.html">Conceptual Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conceptual-overview/aspnet.html">Introduction to ASP.NET Core</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="conceptual-overview/choosing-the-right-dotnet.html">Choosing the Right .NET For You on the Server</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/index.html">Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/startup.html">Application Startup</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/middleware.html">Middleware</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/static-files.html">Working with Static Files</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/routing.html">Routing</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/diagnostics.html">Diagnostics</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/error-handling.html">Error Handling</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/localization.html">Globalization and localization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/configuration.html">Configuration</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/logging.html">Logging</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/file-providers.html">🔧 File Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/dependency-injection.html">Dependency Injection</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/environments.html">Working with Multiple Environments</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/app-state.html">Managing Application State</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/servers.html">Servers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/request-features.html">Request Features</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/owin.html">OWIN</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mvc/index.html">MVC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mvc/overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mvc/models/index.html">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mvc/models/model-binding.html">Model Binding</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/models/validation.html">Model Validation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/models/formatting.html">🔧 Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/models/custom-formatters.html">🔧 Custom Formatters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mvc/views/index.html">Views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/razor.html">🔧 Razor Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/layout.html">Layout</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/dynamic-vs-static.html">🔧 Dynamic vs Strongly Typed Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/working-with-forms.html">Working with Forms</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/html-helpers.html">🔧 HTML Helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/tag-helpers/index.html">Tag Helpers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mvc/views/tag-helpers/intro.html">Introduction to Tag Helpers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="mvc/views/working-with-forms.html">Working with Forms</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="mvc/views/tag-helpers/authoring.html">Authoring Tag Helpers</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/partial.html">🔧 Partial Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/dependency-injection.html">Injecting Services Into Views</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/view-components.html">View Components</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/custom-view-engine.html">🔧 Creating a Custom View Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/views/mobile.html">🔧 Building Mobile Specific Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mvc/controllers/index.html">Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/actions.html">Controllers, Actions, and Action Results</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/routing.html">🔧 Routing to Controller Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/filters.html">Filters</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/dependency-injection.html">Dependency Injection and Controllers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/testing.html">Testing Controller Logic</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/areas.html">Areas</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mvc/controllers/application-model.html">🔧 Working with the Application Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing/index.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing/unit-testing.html">Unit Testing</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/integration-testing.html">Integration Testing</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mvc/controllers/testing.html">Testing Controller Logic</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Working with Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data/entity-framework-6.html">Getting Started with ASP.NET Core and Entity Framework 6</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="http://docs.efproject.net/en/latest/platforms/aspnetcore/index.html">Getting Started With ASP.NET Core and Entity Framework Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/azure-storage/index.html">Azure Storage</a><ul>
+<li class="toctree-l3"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-connected-services-storage/">Adding Azure Storage by Using Visual Studio Connected Services</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/">Get Started with Azure Blob storage and Visual Studio Connected Services</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-queues/">Get Started with Queue Storage and Visual Studio Connected Services</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-tables/">How to Get Started with Azure Table Storage and Visual Studio Connected Services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client-side/index.html">Client-Side Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="client-side/using-gulp.html">Using Gulp</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/using-grunt.html">Using Grunt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/bower.html">Manage Client-Side Packages with Bower</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/bootstrap.html">Building Beautiful, Responsive Sites with Bootstrap</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/knockout.html">Knockout.js MVVM Framework</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/angular.html">Using Angular for Single Page Applications (SPAs)</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/less-sass-fa.html">Styling Applications with Less, Sass, and Font Awesome</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/bundling-and-minification.html">Bundling and Minification</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/cdn.html">🔧 Working with a Content Delivery Network (CDN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/responsive-design.html">🔧 Responsive Design for the Mobile Web</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.typescriptlang.org/docs/handbook/asp-net-core.html">TypeScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client-side/yeoman.html">Building Projects with Yeoman</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mobile/index.html">Mobile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="client-side/responsive-design.html">🔧 Responsive Design for the Mobile Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mvc/views/mobile.html">🔧 Building Mobile Specific Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="publishing/index.html">Publishing and Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="publishing/iis.html">Publishing to IIS</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/iis-with-msdeploy.html">Publishing to IIS with Web Deploy using Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/web-publishing-vs.html">How Web Publishing In Visual Studio Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/azure-continuous-deployment.html">Publishing to an Azure Web App with Continuous Deployment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/azure-windows-vm.html">🔧 Publishing to a Windows Virtual Machine on Azure</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/">Publish to a Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/linuxproduction.html">Publish to a Linux Production Environment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publishing/how-to-customize.html">🔧 How to Customize Publishing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hosting/index.html">Guidance for Hosting Providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hosting/aspnet-core-module.html">ASP.NET Core Module Configuration Reference</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hosting/directory-structure.html">Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting/apppool.html">Application Pools</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hosting/servicing.html">Servicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting/dataprotection.html">Data Protection</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security/index.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security/authentication/index.html">Authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/identity.html">Introduction to Identity</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/sociallogins.html">Enabling authentication using Facebook, Google and other external providers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/accconfirm.html">Account Confirmation and Password Recovery</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/2fa.html">Two-factor authentication with SMS</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/oauth2.html">🔧 Supporting Third Party Clients using OAuth 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/cookie.html">Using Cookie Middleware without ASP.NET Core Identity</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authentication/azure-active-directory/index.html">Azure Active Directory</a><ul>
+<li class="toctree-l4"><a class="reference external" href="http://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnet5">Integrating Azure AD Into an ASP.NET Core Web App</a></li>
+<li class="toctree-l4"><a class="reference external" href="http://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnet5">Calling a ASP.NET Core Web API From a WPF Application Using Azure AD</a></li>
+<li class="toctree-l4"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnet5/">Calling a Web API in an ASP.NET Core Web Application Using Azure AD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security/authorization/index.html">Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/introduction.html">Introduction</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/simple.html">Simple Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/roles.html">Role based Authorization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/claims.html">Claims-Based Authorization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/policies.html">Custom Policy-Based Authorization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/dependencyinjection.html">Dependency Injection in Requirement Handlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/resourcebased.html">Resource Based Authorization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/views.html">View Based Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/limitingidentitybyscheme.html">Limiting identity by scheme</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/authorization/authorization-filters.html">🔧 Authorization Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security/data-protection/index.html">Data Protection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/introduction.html">Introduction to Data Protection</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/using-data-protection.html">Getting Started with the Data Protection APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/consumer-apis/index.html">Consumer APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/overview.html">Consumer APIs Overview</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/purpose-strings.html">Purpose Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/purpose-strings-multitenancy.html">Purpose hierarchy and multi-tenancy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/password-hashing.html">Password Hashing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/limited-lifetime-payloads.html">Limiting the lifetime of protected payloads</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/consumer-apis/dangerous-unprotect.html">Unprotecting payloads whose keys have been revoked</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/configuration/index.html">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/configuration/overview.html">Configuring Data Protection</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/configuration/default-settings.html">Default Settings</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/configuration/machine-wide-policy.html">Machine Wide Policy</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/configuration/non-di-scenarios.html">Non DI Aware Scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/extensibility/index.html">Extensibility APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/extensibility/core-crypto.html">Core cryptography extensibility</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/extensibility/key-management.html">Key management extensibility</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/extensibility/misc-apis.html">Miscellaneous APIs</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/implementation/index.html">Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/authenticated-encryption-details.html">Authenticated encryption details.</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/subkeyderivation.html">Subkey Derivation and Authenticated Encryption</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/context-headers.html">Context headers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-management.html">Key Management</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-storage-providers.html">Key Storage Providers</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-encryption-at-rest.html">Key Encryption At Rest</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-immutability.html">Key Immutability and Changing Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-storage-format.html">Key Storage Format</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/implementation/key-storage-ephemeral.html">Ephemeral data protection providers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security/data-protection/compatibility/index.html">Compatibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/compatibility/cookie-sharing.html">Sharing cookies between applications</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="security/data-protection/compatibility/replacing-machinekey.html">Replacing &lt;machineKey&gt; in ASP.NET</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security/app-secrets.html">Safe storage of app secrets with the Secret Manager tool</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security/enforcing-ssl.html">🔧 Enforcing SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/anti-request-forgery.html">🔧 Anti-Request Forgery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/open-redirect.html">🔧 Preventing Open Redirect Attacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/cross-site-scripting.html">🔧 Preventing Cross-Site Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/cors.html">Enabling Cross-Origin Requests (CORS)</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance/index.html">Performance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance/measuring.html">🔧 Measuring Application Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance/caching/index.html">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance/caching/memory.html">In Memory Caching</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="performance/caching/distributed.html">Working with a Distributed Cache</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="performance/caching/response.html">Response Caching</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="performance/caching/output.html">🔧 Output Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration/index.html">Migration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration/mvc.html">Migrating From ASP.NET MVC to ASP.NET Core MVC</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration/configuration.html">Migrating Configuration</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration/identity.html">Migrating Authentication and Identity</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration/webapi.html">Migrating from ASP.NET Web API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration/http-modules.html">Migrating HTTP Modules to Middleware</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration/rc1-to-rc2.html">Migrating from ASP.NET 5 RC1 to ASP.NET Core</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/index.html">Contribute</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md">ASP.NET Contributing Guide</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md">ASP.NET Docs Contributing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute/style-guide.html">ASP.NET Docs Style Guide</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="related-resources">
+<h2>Related Resources<a class="headerlink" href="#related-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://microsoft.com/net/core">.NET Core</a></li>
+<li><a class="reference external" href="https://docs.efproject.net/">Entity Framework Core</a></li>
+<li><a class="reference external" href="http://docs.asp.net/projects/aspnetwebhooks">WebHooks</a></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Contribute<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The documentation on this site is the handiwork of our many <a class="reference external" href="https://github.com/aspnet/docs/contributors">contributors</a>.</p>
+<p><strong>We accept pull requests!</strong> But you&#8217;re more likely to have yours accepted if you follow these guidelines:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Read <a class="reference external" href="https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md">https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md</a></li>
+<li>Follow the <a class="reference internal" href="contribute/style-guide.html#style-guide"><span class="std std-ref">ASP.NET Docs Style Guide</span></a></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+
+
+
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting-started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 10, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.html"></script>
+      <script type="text/javascript" src="_static/underscore.html"></script>
+      <script type="text/javascript" src="_static/doctools.html"></script>
+      <script type="text/javascript" src="_static/helpfulness1bce.html?v=6"></script>
+      <script type="text/javascript" src="_static/disqus1bce.html?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.html"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/Media/Default/Windows-Live-Writer/Building-the-ASP.NET-Core-Docs_B7CF/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:20:51 GMT -->
+</html>

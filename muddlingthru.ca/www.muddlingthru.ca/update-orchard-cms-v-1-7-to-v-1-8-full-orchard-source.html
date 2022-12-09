@@ -1,0 +1,194 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/update-orchard-cms-v-1-7-to-v-1-8-full-orchard-source by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:19:11 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Update Orchard CMS v.1.7 to v.1.8</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Update Orchard CMS v.1.7 to v.1.8</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/orchard-cms.html">orchard-cms</a>, <a href="Tags/asp-4.html">asp.net-mvc</a>, <a href="Tags/azure.html">azure</a>, <a href="Tags/web-matrix.html">web-matrix</a>, <a href="Tags/visual-studio.html">visual-studio</a>, <a href="Tags/upgrade.html">upgrade</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Thursday, May 22, 2014 10:00:41 PM</div>
+            </div>
+    </header>
+    <p><h2>tl;dr</h2> <ol> <li>Download the App<em>Data/Sites, Media, Modules, and Themes/&lt;any-in-use-themes&gt; folders from the existing&nbsp; v1.7 site.</li> <li>Download a new Orchard.Web.1.8 site. Delete its App</em>Data and Media folders.</li> <li>Copy and paste content into the new site:</li> <ol> <li>The App<em>Data/Sites and Media folders.</li> <li>All in-use themes from the Themes folder (ignoring built in themes).</li></ol> <li>Package the existing Theme; import it into the new site.</li></ol> <p>Note: these instructions do NOT yet cover module migration. Basically, list all the modules &amp; features that the existing site uses. Then make sure those are installed &amp; enabled on the new site.</p> <h2>Scenario</h2> <p>I have an existing Orchard CMS hosted in a Windows Azure Website. I would like to upgrade to v1.8. Here are the steps. <font style="background-color: #ffff00">Note: Works on my machine!</font></p> <h2><font style="background-color: #ffffff">Opinion</font></h2> <p><strong>We should not deploy an Orchard CMS from source control.</strong> There are two reasons. First, doing so would overwrite the App</em>Data, Media, Modules, and Themes folders on each push. We don’t want that. Those folders hold end-user data. Second, we don’t need source control for a deployment of Orchard. We aren’t modifying its source! We only modify the source to create themes and modules. </p> <p>We should deploy Orchard with Visual Studio/WebMatrix/WebDeploy/FTP/Etc, and then we should regularly backup the site.</p> <h2><font style="background-color: #ffffff">Tools</font></h2> <ul> <li><font style="background-color: #ffffff"><strong>WebMatrix</strong> to download the existing site from Azure.</font>  <li><font style="background-color: #ffffff"><strong>Visual Studio </strong>to publish the new site to Azure.</font>  <li><strong>Command Prompt</strong> to package the existing theme.  <li><font style="background-color: #ffffff"><strong>Windows File Explorer</strong> to copy and paste the App<em>Data and Media folders.</font></li></ul> <h2>Steps</h2> <h3>Download the <u>current</u> Orchard CMS assets from Azure.</h3> <h4>With WebMatrix</h4> <p>WebMatrix is the alternative when FTP isn’t working.</p> <ol> <li>Login to <a href="https://manage.windowsazure.com/" target="_blank">Windows Azure Portal</a>  <li>Open your site  <li>Click the WebMatrix button  <li>Choose “Edit local copy”  <li>Choose, “No, just download the files and database”  <li>The files will land in \Documents\My Web Sites\TheSiteName</li></ol> <h3>With FTP</h3> <p>In the case that FTP is working, download just these folders:</p> <ol> <li>App</em>Data</li> <li>Media</li> <li>Themes</li> <li>Modules</li></ol> <p>Usually, I store the download in my Downloads folder.</p> <h3>Gather the <u>current</u> site’s assets into one folder.</h3> <ol> <li>Create a new folder to hold the assets. (This folder will act as a backup and migration package.) <li>Copy and paste the following into that folder:  <ol> <li>App_Data  <li>Media  <li>Nuget package of the current theme.</li></ol></li></ol> <p>Here is how to create the Nuget Package.</p><pre class="csharpcode">Orchard.exe
+package create MyThemeName c:\temp</pre>
+<style type="text/css">.csharpcode, .csharpcode pre
+{
+    font-size: small;
+    color: black;
+    font-family: consolas, "Courier New", courier, monospace;
+    background-color: #ffffff;
+    /<em>white-space: pre;</em>/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+    background-color: #f4f4f4;
+    width: 100%;
+    margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</style></p>
+
+<h3><a href="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/Update-Orchard-CMS-v.1.7.0.0-to-v.1.8_D12A/image_2.png"><img title="image" style="display: inline" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/Update-Orchard-CMS-v.1.7.0.0-to-v.1.8_D12A/image_thumb.png" width="240" height="121"></a></h3>
+
+<h3>Create a <u>new</u>, local Orchard CMS v1.8.</h3>
+
+<p>There are many ways to obtain a local copy. <u>Here are three</u>: </p>
+
+<ol>
+<li>Create it from Windows Azure Gallery. Then download it with WebMatrix. 
+<li>Create it from WebMatrix (File &gt; New &gt; Site from Application Gallery). 
+<li>Download Orchard.Web.1.8.zip from <a href="http://orchard.codeplex.com/releases/view/115750" target="_blank">orchard.codeplex</a>. Unblock before unzipping. 
+<li>For the remaining steps, I work almost entirely out of the Downloads folder.</li></ol>
+
+<p><font style="background-color: #ffffff">Note: We use Orchard.Web because we do not need to modify the source.</font></p>
+
+<h3>Copy, paste, and import the <u>current</u> into the <u>new</u>.</h3>
+
+<ul>
+<li>Copy the entire App_Data folder 
+<li>Copy the entire Media folder 
+<li>Run the new site locally (<font style="background-color: #ffff00">d</font><font style="background-color: #ffff00">o NOT run Orchard setup)</font>, to import the theme and module packages. 
+<ul>
+<li>I run the site via IISExpress through Visual Studio or WebMatrix 
+<li>A better way might involve the Orchard command line. For now, I am get ACL problems that way.</li></ul></li></ul>
+
+<h3>Publish the <u>new</u> to the <u>current</u> Azure Website.</h3>
+
+<ul>
+<li>Do this with Visual Studio or WebMatrix. 
+<li>More details coming soon. 
+<li>Once that’s done, it’s okay to ZIP and/or delete the local copies of both the new and the old Orchard CMS.</li></ul>
+
+<h3>Tested On</h3>
+
+<ul>
+<li><a title="http://www.slopeofkongwahill.com/" href="http://www.slopeofkongwahill.com/">http://www.slopeofkongwahill.com/</a> on 22 May 2014 to upgrade from v1.7 to 1.8 
+<li>More coming soon.</li></ul>
+
+<h3>Bugs along the Way</h3>
+
+<ul>
+<li>Orchard.Web.1.8 doesn’t build in Visual Studio 2013.</li>
+<li>package install Orchard.Theme.PackageName C:\temp\PackageName.nupkg doesn’t work.</li></ul>
+
+<h3>Research Questions</h3>
+
+<ul>
+<li>Can I do all of the above with Visual Studio and not WebMatrix? 
+<li>When we use Git Deploy, how does Windows Azure choose the csproj to run? 
+<ul>
+<li>See <a title="http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx" href="http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx">http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx</a></li></ul>
+<li>Can I automate much of this with PowerShell? 
+<ul>
+<li>Download file from web. 
+<li>Unblock and unzip to specific location. 
+<li>Move folders. 
+<li>Import theme.</li></ul></li></ul>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn6771.html?ReturnUrl=%2Fupdate-orchard-cms-v-1-7-to-v-1-8-full-orchard-source" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/update-orchard-cms-v-1-7-to-v-1-8-full-orchard-source by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:19:12 GMT -->
+</html>

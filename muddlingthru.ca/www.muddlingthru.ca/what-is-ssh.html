@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/what-is-ssh by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:18:05 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - What is SSH?</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>What is SSH?</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/ssh.html">ssh</a>, <a href="Tags/encryption.html">encryption</a>, <a href="Tags/security.html">security</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Monday, July 27, 2015 9:47:51 PM</div>
+            </div>
+    </header>
+    <p><p>SSH stands for Secure Shell. It’s a communication protocol (like HTTP) for secure shell sessions on a remote machine. It uses public-key cryptography in one of two ways: </p> <ul> <li>With a password. </li> <li>Without a password.</li></ul> <h1>Public-Key Cryptography</h1> <p>For authentication, SSH uses <strong>public-key (aka asymmetric) cryptography</strong>, in which the public key performs one operation and the private key performs the opposite. For instance, to ensure message <strong>confidentiality</strong>, the public key encrypts (or locks) a message and the private key decrypts (or unlocks) it. As another example, to ensure message <strong>integrity</strong>, the private key signs a message and the public key verifies the signature. An additional layer of security can bind a public key to a identity – often this is the function of an X.509 certificate – to prevent man-in-the-middle attacks.</p> <h2>Open Padlock (Public Key)</h2> <p>An open padlock is similar to the public key. Anybody who has the open padlock can use it to lock a message.</p> <p><a href="Media/Default/Windows-Live-Writer/What-is-SSH_CA00/image_2.png"><img title="image" style="display: inline" alt="image" src="Media/Default/Windows-Live-Writer/What-is-SSH_CA00/image_thumb.png" width="179" height="240"></a></p> <h2>Padlock’s Key (Private Key)</h2> <p>The padlock’s key is what the owner of the padlock can use to open a message. The padlock’s key is private – only the owner of the padlock has it.</p> <p><a href="Media/Default/Windows-Live-Writer/What-is-SSH_CA00/image_4.png"><img title="image" style="display: inline" alt="image" src="Media/Default/Windows-Live-Writer/What-is-SSH_CA00/image_thumb_1.png" width="151" height="216"></a></p> <h2>Written Signature (X.509 Certificate)</h2> <p>The written signature is what anyone can use to verify that the padlock belongs to the owner.</p> <p><img src="../upload.wikimedia.org/wikipedia/commons/thumb/d/d5/JohnHancocksSignature.svg/1280px-JohnHancocksSignature.svg.png" width="581" height="159"></p> <h2>Analogy</h2> <p>Imaging the following private communication between two people named John and Jane. Jane has a padlock that contains John’s signature.&nbsp; She knows that if she locks a message with that padlock, only John will ever be able to read it. Here’s how it might happen:</p> <ul> <li>John buys a padlock with a key and pens his signature on it.  <li>John opens the padlock and sends it to Jane.  <li>Jane shows the open padlock to one of John’s friends, who verifies that the signature on it belongs to John.  <li>Checkpoint: Jane knows that she has a padlock that belongs to John.  <li>Jane writes a secret note for John, puts it in a box, locks it with John’s padlock, and sends it to John.  <li>John receives the box and opens the padlock with his key.</li></ul> <p>Jane is sure that only John can read the message. Hooray <img class="wlEmoticon wlEmoticon-smile" style="border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none" alt="Smile" src="Media/Default/Windows-Live-Writer/What-is-SSH_CA00/wlEmoticon-smile_2.png"></p> <h1>References</h1> <p><a title="https://en.wikipedia.org/wiki/Secure_Shell" href="https://en.wikipedia.org/wiki/Secure_Shell">https://en.wikipedia.org/wiki/Secure<em>Shell</a></p> <p><a title="https://en.wikipedia.org/wiki/Public-key_cryptography" href="https://en.wikipedia.org/wiki/Public-key_cryptography">https://en.wikipedia.org/wiki/Public-key</em>cryptography</a></p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn846c.html?ReturnUrl=%2Fwhat-is-ssh" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/what-is-ssh by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:18:14 GMT -->
+</html>

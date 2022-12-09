@@ -1,0 +1,238 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static dir-ltr orchard-tags" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/Tags/productivity by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:17 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Contents tagged with productivity - Tags</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="../modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="../index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="../Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<h1 class="page-title">Contents tagged with <span>productivity</span></h1>
+<ul class="content-items tagged-posts"><li class="first">
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../run-an-application-on-windows-startup.html">Run an application on Windows startup</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="windows.html">windows</a>, <a href="windows-7.html">windows-7</a>, <a href="productivity.html">productivity</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Friday, March 20, 2015 3:12:00 PM</div>
+        </div>
+    </header>
+    
+
+<p>
+Create a shortcut to the executable (right click, create shortcut).
+Move the shortcut to the Startup folder.
+
+
+Startup folder:
+
+C:\Users\[user]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\&#160;&#8230; <a href="../run-an-application-on-windows-startup.html">more</a></p>
+</article></li>
+<li>
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../7zip-extract-an-archive-to-a-specific-directory-from-the-command-line.html">7zip - Extract an archive to a specific directory from the command line.</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="powershell.html">powershell</a>, <a href="command-line.html">command-line</a>, <a href="7zip.html">7zip</a>, <a href="productivity.html">productivity</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Friday, February 27, 2015 11:28:00 PM</div>
+        </div>
+    </header>
+    
+
+<p>Command Line
+
+7z e foobar.zip -oFoobar
+
+Yes. A space does not separate the -o switch from the destination directory.
+
+PowerShell
+
+&amp; 7z e foobar.zip -oFoobar
+
+Without an ampersand, PoSH will bark:&#160;&#8230; <a href="../7zip-extract-an-archive-to-a-specific-directory-from-the-command-line.html">more</a></p>
+</article></li>
+<li>
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../daily-office-powershell.html">Daily Office PowerShell</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="powershell.html">powershell</a>, <a href="productivity.html">productivity</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Wednesday, February 25, 2015 9:05:00 PM</div>
+        </div>
+    </header>
+    
+
+<p>Get-History
+
+history | group { $_.CommandLine }
+
+history | where { $_.CommandLine - like "*foobar*" }
+
+history | group { $_.CommandLine } | select count, name
+
+history | group { $_.CommandLine } |&#160;&#8230; <a href="../daily-office-powershell.html">more</a></p>
+</article></li>
+<li>
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../some-live-writer-keyboard-shortcuts.html">Some Live Writer Keyboard Shortcuts</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="keyboard-shortcuts.html">keyboard-shortcuts</a>, <a href="productivity.html">productivity</a>, <a href="livewriter.html">livewriter</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Monday, September 22, 2014 7:15:12 PM</div>
+        </div>
+    </header>
+    
+
+<p>Shortcuts ctrl + S to save alt + H + P + 1 to publish ctrl + left + alt + 1 to make a heading 1  See also:  http://windows.microsoft.com/en-CA/windows-live/writer-keyboard-shortcuts
+ <a href="../some-live-writer-keyboard-shortcuts.html">more</a></p>
+</article></li>
+<li>
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../windows-run-commands.html">Windows Run Commands</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="windows.html">windows</a>, <a href="productivity.html">productivity</a>, <a href="run.html">run</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Monday, September 22, 2014 7:02:56 PM</div>
+        </div>
+    </header>
+    
+
+<p>How to Quickly Run a Program  win + R to open the run dialog  start &lt;program-name&gt; to run from cmd or powershell E.g.  win + R, firefox  start firefox Some Program Names  inetmgr to run IIS.&#160;&#8230; <a href="../windows-run-commands.html">more</a></p>
+</article></li>
+<li class="last">
+<article class="content-item blog-post">
+    <header>
+        
+
+<h1><a href="../automation-wish-list.html">Automation Wish List</a></h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="productivity.html">productivity</a>    </p>
+
+        <div class="metadata">
+            <div class="published">Thursday, June 5, 2014 12:45:13 AM</div>
+        </div>
+    </header>
+    
+
+<p> Sync contacts between Outlook.com (i.e. the People app) and QuickBooks. Print a single envelope for a contact (i.e. right click, print envelope).
+ <a href="../automation-wish-list.html">more</a></p>
+</article></li>
+</ul>
+
+
+</div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="../Users/Account/LogOnf3b3.html?ReturnUrl=%2FTags%2Fproductivity" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/Tags/productivity by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:20 GMT -->
+</html>

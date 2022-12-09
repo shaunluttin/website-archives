@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/choosing-an-ssl-certificate-and-provider by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:24 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Choosing an SSL Certificate and Provider</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Choosing an SSL Certificate and Provider</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/ssl.html">ssl</a>, <a href="Tags/web-development.html">web-development</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Thursday, July 31, 2014 2:55:34 PM</div>
+            </div>
+    </header>
+    <p><h1>Providers</h1> <p>The * indicates how many recommendations a provider received in the HN articles listed in the Resources section. One star means two mentions, two stars means three mentions.</p> <ul> <li>StartSSL (free) * * * * * * * * * * * * * *</li> <li>Namecheap * * * * * *</li> <li>Gandi * * * *</li> <li>RapidSSL * * *</li> <li>DigiCert * *</li> <li>Comodo * *</li> <li>DNSimple *</li> <li>GetSSL * *</li> <li>Cacert (free)</li> <li>GeoTrust</li> <li>GlobalSign</li> <li>Verisign</li> <li>StartCom</li> <li>CheapSSL *</li> <li>PositiveSSL</li> <li>Trustico</li> <li>GoDaddy</li> <li>Exoware</li> <li>AlphaSSL</li></ul> <h1>Scenarios</h1> <ul> <li><strong>Self Signed Cert</strong> ( $0 ). Internal ( not public ) consumption only. Avoid.</li> <li><strong>Simple Cert</strong> ( $0 ). Secure login page for personal use. Recommended.</li> <li><strong>Basic Cert</strong> ( &lt; $10 / yr ). Give access to more people.</li> <li><strong>Wildcard Cert</strong> ( &lt; $90 / yr). Support all sub-domains of the primary domain.</li> <li><strong>EV Cert</strong> ( &lt; $100 / yr ). Get the green bar; maybe important for your image, if you’re selling something.</li></ul> <h1>Terminology &amp; Jargon</h1> <ul> <li><strong>EV. Extended Validation</strong>. This causes the <u>green bar</u> on the browser. Worth it?</li> <li><strong>Wildcard Certificates</strong>. These work on all sub-domains.</li> <li><strong>CA. Certificate Authority.</strong> This is the organization that issues the certificate.</li> <li>MITM</li> <li>Bundling in the CA</li> <li>Certification Chaining</li> <li>Certificate Bundling</li> <li>CSR</li> <li>Primary</li> <li>Multiple domains, one certificate</li> <li>Certificate acceptance (e.g. “They have slightly lower acceptance…”)</li> <li>SNI Certificate</li></ul> <h1>Resources</h1> <p><a href="https://news.ycombinator.com/item?id=3556796">Ask HN: What's the best company to buy SSL certificates from?</a> (from 2011 – lots of comments)</p> <p><a href="https://news.ycombinator.com/item?id=8073739">Ask HN: Recommended SSL CA?</a> (from 2014 – few comments)</p> <p><a href="https://news.ycombinator.com/item?id=7800194">Ask HN: what provider do you use for SSL certificates?</a> (from 2014 – few comments)</p> <p><a href="https://news.ycombinator.com/item?id=6524389">Ask HN: What SSL certificate provider are you using and why?</a> (from 2013 – few comments)</p> <p><a href="https://news.ycombinator.com/item?id=7461783">Ask HN: Where should someone buy a SSL certificate?</a> (from 2014 – few comments)</p> <p><a href="https://news.ycombinator.com/item?id=8073739">Ask HN: Recommended SSL CA?</a> (from 2014 – few comments)</p> <p><a href="https://stripe.com/help/ssl">https://stripe.com/help/ssl</a> (good advice on setting up SSL)</p> <p><a title="https://www.ssllabs.com/ssltest/" href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a> (check whether you correctly setup your SSL Certificate)</p> <p><a href="https://konklone.com/post/switch-to-https-now-for-free?hn">https://konklone.com/post/switch-to-https-now-for-free?hn</a> (explains how to use StartSSL)</p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn60de.html?ReturnUrl=%2Fchoosing-an-ssl-certificate-and-provider" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/choosing-an-ssl-certificate-and-provider by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:25 GMT -->
+</html>

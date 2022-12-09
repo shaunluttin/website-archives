@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Muddling Thru</title><link>http://www.muddlingthru.ca:80/</link><description></description><item><title>Buying a tournament-style chess set in Vancouver, British Columbia</title><link>http://www.muddlingthru.ca:80/buying-a-tournament-style-chess-set-in-vancouver-british-columbia</link><description>&lt;h2&gt;The Regency Chess Company (best value)&lt;/h2&gt;
+
+&lt;p&gt;Conqueror Set 3.875" King &amp;amp; Green Board&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CDN$ 29.95 + CDN$ 11.00 shipping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/Media/Default/BlogImages/chess-03.PNG" alt="enter image description here" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;The House of Staunton&lt;/h2&gt;
+
+&lt;p&gt;Deluxe DGT North American Chess Set Combination&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;US$ 69 + US$ 39.69 shipping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/Media/Default/BlogImages/chess-02.PNG" alt="enter image description here" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Amazon.ca&lt;/h2&gt;
+
+&lt;p&gt;WE Games Complete Deluxe Tournament Chess Set, Black Canvas Bag, Heavy Weighted Staunton Chess Pieces, and Royal Crest Analog Chess Clock/Timer &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CDN$ 115.00 + CDN$ 88.95 shipping&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/Media/Default/Website-UI-Uploads/chess-01.PNG" alt="enter image description here" /&gt;&lt;/p&gt;
+</description><pubDate>Fri, 10 Mar 2017 16:52:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/buying-a-tournament-style-chess-set-in-vancouver-british-columbia</guid></item><item><title>netstandard API contracts and surface area</title><link>http://www.muddlingthru.ca:80/netstandard-api-contracts-and-surface-area</link><description>&lt;p&gt;Find these at https://apisof.net/catalog&lt;/p&gt;
+
+&lt;p&gt;To see whether a specific class or class member is supported, drill down to its page. For instance, see the version support for &lt;code&gt;HttpWebRequest.Timeout&lt;/code&gt; at this URL: https://apisof.net/catalog/System.Net.HttpWebRequest.Timeout&lt;/p&gt;
+
+&lt;p&gt;See also: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;https://github.com/dotnet/standard/blob/master/docs/versions/&lt;/li&gt;
+&lt;li&gt;https://docs.microsoft.com/en-us/dotnet/articles/standard/library&lt;/li&gt;
+&lt;li&gt;https://docs.microsoft.com/en-us/dotnet/core/api/&lt;/li&gt;
+&lt;li&gt;http://stackoverflow.com/a/42685492/1108891&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Fri, 10 Mar 2017 01:03:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/netstandard-api-contracts-and-surface-area</guid></item><item><title>High-level notes on the SynchronizationContext</title><link>http://www.muddlingthru.ca:80/high-level-notes-on-the-synchronizationcontext</link><description>&lt;blockquote&gt;
+  &lt;p&gt;DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Questions to Answer&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;How do we safely do a fire-and-forget with async/await?&lt;/li&gt;
+&lt;li&gt;On what thread does the &lt;code&gt;SynchronizationContext&lt;/code&gt; itself run?&lt;/li&gt;
+&lt;li&gt;How do we access the &lt;code&gt;SynchronizationContext&lt;/code&gt;?&lt;/li&gt;
+&lt;li&gt;How does the &lt;code&gt;SynchronizationContext&lt;/code&gt; differ from the &lt;code&gt;IAsyncStateMachine&lt;/code&gt;? &lt;/li&gt;
+&lt;li&gt;What state does the &lt;code&gt;SynchronizationContext&lt;/code&gt; capture?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Historical Context&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;ISynchronizeInvoke&lt;/code&gt; standardizes use of the Windows Message Queue.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;queues work to a thread&lt;/li&gt;
+&lt;li&gt;checks whether synchronization is necessary&lt;/li&gt;
+&lt;li&gt;lets a source thread queue a delegate to a target thread&lt;/li&gt;
+&lt;li&gt;if source is already target, does not bother queuing&lt;/li&gt;
+&lt;li&gt;source can optionally wait for delegate completion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;SynchronizationContext&lt;/code&gt; replaces it to support ASP.NET async pages.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;queues work to a context (NOT to a thread)&lt;/li&gt;
+&lt;li&gt;does NOT check whether synchronization is necessary&lt;/li&gt;
+&lt;li&gt;maintains a count of outstanding operations&lt;/li&gt;
+&lt;li&gt;every thread has an current context&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;code&gt;SynchronizationContext&lt;/code&gt; Implementations&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;WindowsFormsSynchronizationContext&lt;/code&gt; &amp;amp; &lt;code&gt;DispatcherSynchronizationContext&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;execute delegates on a single thread&lt;/li&gt;
+&lt;li&gt;execute delegates one at a time&lt;/li&gt;
+&lt;li&gt;execute delegates in queued order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Default &lt;code&gt;SynchronizationContext&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;executes delegates on any thread from the process's thread pool&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;execute delegates one at a time&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;execute delegates in queued order&lt;/s&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;AspNetSynchronizationContext&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;execute delegates on any thread from the process's thread pool&lt;/li&gt;
+&lt;li&gt;execute delegates one at a time&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;execute delegates in queued order&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;maintains the identity &amp;amp; culture of the initial thread&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;The Task Parallel Library (TPL)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;uses &lt;code&gt;Task&lt;/code&gt; objects as units of work&lt;/li&gt;
+&lt;li&gt;executes tasks with the &lt;code&gt;TaskScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the behavior of the default &lt;code&gt;TaskScheduler&lt;/code&gt;...&lt;/li&gt;
+&lt;li&gt;matches the behavior of the default &lt;code&gt;SynchronizationContext&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;any thread&lt;/li&gt;
+&lt;li&gt;any time&lt;/li&gt;
+&lt;li&gt;any order&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;async/await&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;in addition to creating a state machine (&lt;a href="http://tryroslyn.azurewebsites.net/#b:master/f:r/K4Zwlgdg5gBAygTxAFwKYFsDcAoUlaIoYB0AKgBYBOqAhgCb5k0gDWIO2ADsAEYA2YAMYxBfZiBgAxAPbSY2AN4xl8lTG78hMZggjDSzFgB5IyAHwwAQjUoBBELsEAKAJTY1C92pUA3GzB4aAC8YAF4YAAYcNQBIamRgSghtAHcaMGQYA1ZiSUppdAAlVBBgPmQnQKCXaJUAX2w6oA=="&gt;de-compiled here&lt;/a&gt;),&lt;/li&gt;
+&lt;li&gt;the &lt;code&gt;await&lt;/code&gt; point captures the current &lt;code&gt;SynchronizationContext&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;unless the current context is null&lt;/li&gt;
+&lt;li&gt;in which case it captures the current &lt;code&gt;TaskScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ConfigureAwait(bool)&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;true&lt;/code&gt; try to use the captured context to run the continuation&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;false&lt;/code&gt; not to use the captured context to run the continuation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Marshalling among Threads with Async/Await&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;to marshal means "to transform data from one form to another"&lt;/li&gt;
+&lt;li&gt;in the context of threading, to marshal means
+&lt;ul&gt;
+&lt;li&gt;to transform a unit of work, and &lt;/li&gt;
+&lt;li&gt;to send it to another thread&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;await&lt;/code&gt; asks for the current &lt;code&gt;SynchronizationContext&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;then on continuation,&lt;/li&gt;
+&lt;li&gt;if the current context was null: 
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;await&lt;/code&gt; runs the operation in the original &lt;code&gt;TaskScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;else:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;await&lt;/code&gt; posts the operation to the captured context&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;the decision of where/when to run the operation belongs to the implementation of the &lt;code&gt;SynchronizationContext&lt;/code&gt; and &lt;code&gt;TaskScheduler&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Schedulers&lt;/h2&gt;
+
+&lt;p&gt;Give a scheduler some work and the scheduler determines:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;when to run that work&lt;/li&gt;
+&lt;li&gt;where to run that work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some schedulers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;message pump (aka message loop, event loop, run loop) &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Threading.ThreadPool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Threading.SynchronizationContext&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Threading.Tasks.TaskScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Reactive.Concurrency.EventLoopScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Reactive.Concurrency.IScheduler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System.Windows.Threading.Dispatcher&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;SynchronizationContext&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;is an abstract class that represents a scheduler&lt;/li&gt;
+&lt;li&gt;has several virtual methods&lt;/li&gt;
+&lt;li&gt;e.g. &lt;code&gt;SynchronizationContext.Post()&lt;/code&gt; 
+&lt;ul&gt;
+&lt;li&gt;accepts a delegate and &lt;/li&gt;
+&lt;li&gt;decides when/where to run it&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;TaskScheduler&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;uses the &lt;code&gt;ThreadPool&lt;/code&gt; to queue and execute work&lt;/li&gt;
+&lt;li&gt;the &lt;code&gt;ThreadPool&lt;/code&gt; receives &lt;code&gt;Tasks&lt;/code&gt; as short-lived units of work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;ThreadPool&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;maintains a global work queue 
+&lt;ul&gt;
+&lt;li&gt;it is FIFO&lt;/li&gt;
+&lt;li&gt;it receives top-level tasks&lt;/li&gt;
+&lt;li&gt;it de-queues work to the next available thread&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;maintains local work queues 
+&lt;ul&gt;
+&lt;li&gt;it is LIFO (i.e. like a stack) &lt;/li&gt;
+&lt;li&gt;it receives nested tasks&lt;/li&gt;
+&lt;li&gt;it is specific to the parent task's thread&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;White Elephant&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;an &lt;code&gt;ExecutionContext&lt;/code&gt; contains a current &lt;code&gt;SynchronizationContext&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the &lt;code&gt;SynchronizationContext&lt;/code&gt;, among other things, determines the thread on which to run a delegate&lt;/li&gt;
+&lt;li&gt;delegate / unit of work / operation are vaguely synonymous&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+
+&lt;p&gt;https://msdn.microsoft.com/magazine/gg598924.aspx&lt;/p&gt;
+
+&lt;p&gt;http://stackoverflow.com/questions/5600761/what-is-marshalling-what-is-happening-when-something-is-marshalled&lt;/p&gt;
+
+&lt;p&gt;https://blogs.msdn.microsoft.com/pfxteam/2012/01/20/await-synchronizationcontext-and-console-apps/&lt;/p&gt;
+
+&lt;p&gt;https://msdn.microsoft.com/library/system.threading.tasks.taskscheduler.aspx&lt;/p&gt;
+</description><pubDate>Sat, 25 Feb 2017 17:51:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/high-level-notes-on-the-synchronizationcontext</guid></item><item><title>Find an Azure Function's repository to clone it locally</title><link>http://www.muddlingthru.ca:80/find-an-azure-function-s-repository-to-clone-it-locally</link><description>&lt;ol&gt;
+&lt;li&gt;Open the Azure Function. &lt;/li&gt;
+&lt;li&gt;Open Function App Settings. &lt;/li&gt;
+&lt;li&gt;Go to App Service Settings. &lt;/li&gt;
+&lt;li&gt;The Git Clone URL is listed in the Overview. &lt;/li&gt;
+&lt;/ol&gt;
+</description><pubDate>Tue, 24 Jan 2017 17:59:49 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/find-an-azure-function-s-repository-to-clone-it-locally</guid></item><item><title>C# Nullable Type</title><link>http://www.muddlingthru.ca:80/c-nullable-type</link><description>&lt;p&gt;How does it work?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;it is a struct that wraps a struct&lt;/li&gt;
+&lt;li&gt;if the underlying struct has a value, then
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HasValue&lt;/code&gt; is true and &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Value&lt;/code&gt; returns the value.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;if the underlying struct lacks a value, then 
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HasValue&lt;/code&gt; is false and &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Value&lt;/code&gt; throws an &lt;code&gt;InvalidOperationException&lt;/code&gt;. &lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GetValueOrDefault()&lt;/code&gt; always returns the inner struct's default value.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When is it useful?&lt;/p&gt;
+
+&lt;p&gt;It is useful when we do NOT want to assume that the user (or client application, or data source...) provided the default value, when in fact the user (or client app...) provided no value.&lt;/p&gt;
+
+&lt;p&gt;StackOverflow: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;http://softwareengineering.stackexchange.com/q/340638/116650&lt;/li&gt;
+&lt;li&gt;http://softwareengineering.stackexchange.com/q/340638/116650&lt;/li&gt;
+&lt;li&gt;http://stackoverflow.com/q/11146825/1108891&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reference Source: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;https://referencesource.microsoft.com/#mscorlib/system/nullable.cs,137&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Sat, 21 Jan 2017 04:09:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/c-nullable-type</guid></item><item><title>Install a LetsEncrypt SSL Certificate into an Azure App Service</title><link>http://www.muddlingthru.ca:80/install-a-letsencrypt-ssl-certificate-into-an-azure-app-service</link><description>&lt;p&gt;This post has moved here: &lt;a href="http://bigfontblog.azurewebsites.net/install-a-letsencrypt-ssl-certificate-into-an-azure-app-service/"&gt;http://bigfontblog.azurewebsites.net/install-a-letsencrypt-ssl-certificate-into-an-azure-app-service/&lt;/a&gt;&lt;/p&gt;
+</description><pubDate>Tue, 10 Jan 2017 23:34:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/install-a-letsencrypt-ssl-certificate-into-an-azure-app-service</guid></item><item><title>Use the whatwg-fetch polyfil with the aurelia-fetch-client and the aurelia-cli.</title><link>http://www.muddlingthru.ca:80/use-the-whatwg-fetch-polyfil-with-the-aurelia-fetch-client-and-the-aurelia-cli</link><description>&lt;p&gt;Install the polyfil. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install whatwg-fetch --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Preppend the polyfil to the aurelia.json &gt; vendor-bundle.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;"bundles": [
+  {
+    "name": "vendor-bundle.js",
+    "prepend": [
+      "node_modules/whatwg-fetch/fetch.js",
+      "node_modules/bluebird/js/browser/bluebird.core.js",
+      "node_modules/requirejs/require.js"
+    ],
+    "dependencies": [
+      "aurelia-binding",
+      "aurelia-bootstrapper",
+      "aurelia-dependency-injection",
+      "aurelia-event-aggregator",
+      "aurelia-fetch-client",
+      "aurelia-framework",
+      "aurelia-history",
+&lt;/code&gt;&lt;/pre&gt;
+</description><pubDate>Mon, 09 Jan 2017 20:21:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/use-the-whatwg-fetch-polyfil-with-the-aurelia-fetch-client-and-the-aurelia-cli</guid></item><item><title>Types of Software Testing</title><link>http://www.muddlingthru.ca:80/types-of-software-testing</link><description>&lt;p&gt;The following is a work in progress. It reflects my half-baked sense of the common usage of the following terms.&lt;/p&gt;
+
+&lt;h3&gt;Unit Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Test a really small part of the system in isolation.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;test a single method or function&lt;/li&gt;
+&lt;li&gt;stub or mock-out all complex dependencies&lt;/li&gt;
+&lt;li&gt;take a programmer's perspective (not an end-user's perspective)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Integration Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Test that individual parts work together.&lt;/strong&gt; Do not cross network boundaries.&lt;/p&gt;
+
+&lt;h3&gt;End-to-End Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Test that individual parts work together.&lt;/strong&gt; Do cross network boundaries.&lt;/p&gt;
+
+&lt;h3&gt;Smoke Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The simplest integration or end-to-end test.&lt;/strong&gt; Does the system explode?&lt;/p&gt;
+
+&lt;h3&gt;Functional Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Will it actually work when a user tries it?&lt;/strong&gt; Take a user's perspective.&lt;/p&gt;
+
+&lt;h3&gt;Regression Tests&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Test whether a new feature introduces a bug.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3&gt;Some Sources&lt;/h3&gt;
+
+&lt;p&gt;Some of these sources are more authoritative than others are.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/520064/what-is-unit-test-integration-test-smoke-test-regression-test"&gt;StackOverflow: What is a unit test, integration test, smoke test, regression test?&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests"&gt;StackOverFlow: Unit tests vs functional tests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://testing.googleblog.com/2010/12/test-sizes.html"&gt;Google Testing Blog: Test sizes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://martinfowler.com/articles/microservice-testing"&gt;Martin Fowler: Microservice Testing Strategies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.softwaretestinghelp.com/types-of-software-testing/"&gt;Software Testing Help: Types of software testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.testingexcellence.com/types-of-software-testing-complete-list/"&gt;Testing Excellence: Types of software testing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Fri, 06 Jan 2017 23:00:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/types-of-software-testing</guid></item><item><title>Mystery: Aurelia install and build sometimes fails when run in the deployment target after Kudu Sync. </title><link>http://www.muddlingthru.ca:80/mystery-aurelia-install-and-build-sometimes-fails-when-run-in-the-deployment-target-after-kudu-sync</link><description>&lt;p&gt;The problem is these two commands. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install -y --production
+node_modules/.bin/au build --env production
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Those two commands &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;work on a development machine, &lt;/li&gt;
+&lt;li&gt;work in the Azure App Service, if we run them in the deployment source (before Kudu Sync), and &lt;/li&gt;
+&lt;li&gt;sometimes do not work, if we run them in the deployment target (after Kudu Sync). &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When those commands do not work in the deployment target (i.e. in &lt;code&gt;D:\home\site\wwwroot&lt;/code&gt;), they still do not work if we "Redeploy" - unless we delete everything in &lt;code&gt;wwwroot&lt;/code&gt; before doing the redeploy.&lt;/p&gt;
+
+&lt;p&gt;What exactly do we need to delete for the redeploy to work?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;node_modules&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scripts&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;something-else&lt;/code&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We prefer to run those two problematic commands inside the deployment target, because then we do not have to re-install all of the &lt;code&gt;node_modules&lt;/code&gt;, which we do not store in version control. &lt;/p&gt;
+</description><pubDate>Wed, 28 Dec 2016 01:56:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/mystery-aurelia-install-and-build-sometimes-fails-when-run-in-the-deployment-target-after-kudu-sync</guid></item><item><title>Principles of Object Oriented Design</title><link>http://www.muddlingthru.ca:80/principles-of-object-oriented-design</link><description>&lt;blockquote&gt;
+  &lt;p&gt;DRAFT&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Some of the following are self-explanatory. Others require some explanation.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Encapsulate what varies.&lt;/strong&gt; Restrict outside access to the details of routines that might need to change with changing requirements.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Program to interfaces not implementations.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prefer composition over inheritance.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strive for loosely coupled designs among objects that interact.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Only talk to your friends.&lt;/strong&gt; &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Don't call us; we'll call you.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Depend on abstractions not on concrete classes.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Keep classes open to extension and closed to modification.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A class should have only one reason to change.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Those fit into SOLID principles:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Single Responsibility&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Open-closed&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Liskov Substitution&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interface Segregation&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dependency Inversion&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then there are the &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Law of Demeter.&lt;/strong&gt; This is known as the &lt;em&gt;Principle of Least Knowledge&lt;/em&gt; and is often stated as &lt;em&gt;only talk to your friends.&lt;/em&gt; For instance, if your friend Suzie introduces you to John, do not ask John to do something for you. Instead, make friends with John before asking him any favours. &lt;code&gt;s.j.DoSomething()&lt;/code&gt; breaks the law; &lt;code&gt;j.DoSomething()&lt;/code&gt; follows the it. When we call &lt;code&gt;DoSomething()&lt;/code&gt; directly thru John, our client code touches fewer components, and by passing thru fewer components, our client code has less if not the least knowledge of the system.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Design by Contract&lt;/strong&gt; &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Don't Repeat Yourself&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See also&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;http://www.slideshare.net/intellizhang/the-oo-design-principles&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Sat, 17 Dec 2016 02:45:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/principles-of-object-oriented-design</guid></item><item><title>Object-oriented basics: inheritance, polymorphism, encapsulation, and abstraction</title><link>http://www.muddlingthru.ca:80/object-oriented-basics-inheritance-polymorphism-encapsulation-abstraction</link><description>&lt;p&gt;Inheritance&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;prototypal inheritance allows an object&lt;/li&gt;
+&lt;li&gt;to base itself on another object&lt;/li&gt;
+&lt;li&gt;class-based inheritance allows a class&lt;/li&gt;
+&lt;li&gt;to base itself on another class&lt;/li&gt;
+&lt;li&gt;both allow the child to access&lt;/li&gt;
+&lt;li&gt;the parent's capabilities&lt;/li&gt;
+&lt;li&gt;note: inheritance != subtyping&lt;/li&gt;
+&lt;li&gt;though often inheritance agrees with subtyping&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Polymorphism&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allows a routine (function, method, constructor...)&lt;/li&gt;
+&lt;li&gt;to use variables of different types&lt;/li&gt;
+&lt;li&gt;at different times&lt;/li&gt;
+&lt;li&gt;there are three kinds of polymorphism
+&lt;ul&gt;
+&lt;li&gt;ad hoc polymorphism&lt;/li&gt;
+&lt;li&gt;parameteric polymorphism&lt;/li&gt;
+&lt;li&gt;subtype polymorphism&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Encapsulation&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allows an object (or a closure)&lt;/li&gt;
+&lt;li&gt;to restrict outside access&lt;/li&gt;
+&lt;li&gt;to some of its components&lt;/li&gt;
+&lt;li&gt;and to bundle data with the routines &lt;/li&gt;
+&lt;li&gt;that operate on that data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Abstraction (in an OO context)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allows us to define objects which can...&lt;/li&gt;
+&lt;li&gt;perform work, &lt;/li&gt;
+&lt;li&gt;report on and change their state, and &lt;/li&gt;
+&lt;li&gt;communicate with other objects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Abstraction enables encapsulation, polymorphism, and inheritance.&lt;/p&gt;
+</description><pubDate>Fri, 16 Dec 2016 03:15:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/object-oriented-basics-inheritance-polymorphism-encapsulation-abstraction</guid></item><item><title>From Zip to Convolution to Tuple</title><link>http://www.muddlingthru.ca:80/from-zip-to-convolution-to-tuple</link><description>&lt;p&gt;Reading about Linq's &lt;code&gt;Enumerable.Zip&lt;/code&gt; lead me to read about convolution, which led me to read about the tuple.&lt;/p&gt;
+
+&lt;p&gt;Zip is often a synonym for convolution. Convolution &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;is a function&lt;/li&gt;
+&lt;li&gt;which maps a tuple of sequences &lt;code&gt;(seq01, seq02, ..., seqN)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;into a sequence of tuples &lt;code&gt;[tup01, tup02, tup03, ...]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So what's a tuple?&lt;/p&gt;
+
+&lt;p&gt;As someone with C# experience, &lt;strong&gt;I think of a tuple as a struct with unnamed properties.&lt;/strong&gt; While the analogy eventually breaks down, it succeeds at developing intuition. Note: a tuple is more like a struct than a class, because we generally make a struct immutable. &lt;/p&gt;
+
+&lt;p&gt;Couple rhymes with tuple. The word tuple comes from the suffix of numbers of grouped things. For example, when we reach five items we have a quintuple. Eventually we just say n-tuple, which is like multiple.&lt;/p&gt;
+
+&lt;p&gt;Tuples differ from sets in that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;tuples are ordered and sets are not; &lt;/li&gt;
+&lt;li&gt;tuples can contain duplicates and sets cannot; &lt;/li&gt;
+&lt;li&gt;tuples are finite whereas sets are not.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tuples differ from (ordered) lists too, because we attach more meaning to the index of a tuple item than we do to a list item. In an ordered list, for instance, we might interpret the item at index two as coming before the item at index three. In a tuple, though, an item's index acts more like a struct's property; for instance, a 3-tuple that represents a sentence might have the Subject at index one, the Verb at index two, and the Object at index three. The semantics of a list is called homogenous (an item is an item is an item) and the semantics of a tuple is called heterogenous (because an item is a Subject, or an Object, or a Verb, or a whatever...)&lt;/p&gt;
+
+&lt;p&gt;In addition to having richer semantics than lists do, tuples are immutable whereas lists are mutable. For all those reasons, the following struct and tuple &lt;em&gt;could&lt;/em&gt; have the same meaning.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var sentence = new Sentence // Sentence is a struct
+{
+    Subject = "Shaun";
+    Verb = "eats";
+    Object = "papaya";
+};
+
+var sentence = Tuple.Create("Shaun", "eats", "papaya");
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, it's time for me to head back to learning about &lt;code&gt;Enumerable.Zip&lt;/code&gt;.&lt;/p&gt;
+</description><pubDate>Thu, 15 Dec 2016 22:22:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/from-zip-to-convolution-to-tuple</guid></item><item><title>When can we start using csproj with ASP.NET Core?</title><link>http://www.muddlingthru.ca:80/when-can-we-start-using-csproj-with-asp-net-core</link><description>&lt;p&gt;&lt;strong&gt;Short answer&lt;/strong&gt;: on release of Visual Studio 15. &lt;/p&gt;
+
+&lt;p&gt;In the meantime, keep using project.json. MSFT has deprecated project.json and xproj in favor of csproj, in order to "&lt;a href="https://blogs.msdn.microsoft.com/dotnet/2016/05/23/changes-to-project-json/"&gt;allow unification of the other app models.&lt;/a&gt;" Support of the new csproj system will coincide with the release of Visual Studio 15 RTM.&lt;/p&gt;
+</description><pubDate>Wed, 12 Oct 2016 16:46:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/when-can-we-start-using-csproj-with-asp-net-core</guid></item><item><title>To The Edge or How I Spent My Summer Vacation (2005) </title><link>http://www.muddlingthru.ca:80/to-the-edge-or-how-i-spent-my-summer-vacation-2005</link><description>&lt;p&gt;Jamming my 4x4 down slope,&lt;/p&gt;
+
+&lt;p&gt;smunching metal,&lt;/p&gt;
+
+&lt;p&gt;busting glass,&lt;/p&gt;
+
+&lt;p&gt;jerking it into rocks and stumps for maximum damage&lt;/p&gt;
+
+&lt;p&gt;I drag myself behind to rip open my ugliness&lt;/p&gt;
+
+&lt;p&gt;and let the shame run free.    &lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;Near the bottom, the engine still running, &lt;/p&gt;
+
+&lt;p&gt;I feel it’s close, &lt;/p&gt;
+
+&lt;p&gt;Somewhere here, &lt;/p&gt;
+
+&lt;p&gt;My destination.&lt;/p&gt;
+
+&lt;p&gt;My purpose behind all this  &lt;/p&gt;
+
+&lt;p&gt;Pain.  &lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;Here it is!  After all this time!  &lt;/p&gt;
+
+&lt;p&gt;I kept covering it up when I wasn’t looking.&lt;/p&gt;
+
+&lt;p&gt;No wonder I couldn’t find the motherfucker.&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;Bruised and bloodied &lt;/p&gt;
+
+&lt;p&gt;but anticipating return on my investment &lt;/p&gt;
+
+&lt;p&gt;I drag myself to the edge and take  &lt;/p&gt;
+
+&lt;p&gt;A Good Look.  &lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;Jesus!  It’s a hole! &lt;/p&gt;
+
+&lt;p&gt;A bottomless hole! &lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;Something inside &lt;/p&gt;
+
+&lt;p&gt;recoils me back from the edge &lt;/p&gt;
+
+&lt;p&gt;and I know. &lt;/p&gt;
+
+&lt;p&gt;Self-torture has no return or end,  &lt;/p&gt;
+
+&lt;p&gt;only deeper darkness.  &lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;The engine dies, my heart and pockets empty. &lt;/p&gt;
+
+&lt;p&gt;Abyss in front, wreck behind, &lt;/p&gt;
+
+&lt;p&gt;I sit and smell the woods.     &lt;/p&gt;
+</description><pubDate>Fri, 07 Oct 2016 19:10:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/to-the-edge-or-how-i-spent-my-summer-vacation-2005</guid></item><item><title>Azure Web App Service and Portal downtime analysis 06 October 2017</title><link>http://www.muddlingthru.ca:80/azure-web-app-service-and-portal-downtime-analysis-06-october-2017</link><description>&lt;h1&gt;TLDR;&lt;/h1&gt;
+
+&lt;p&gt;Eight of our Azure Web Apps went down for 23 hours. In additional, several parts of the Azure portal became non-responsive. The problem was a file server that got into a bad state and had to be rebooted.&lt;/p&gt;
+
+&lt;h1&gt;Problem List&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Eight of my Azure Web App service sites are down. &lt;/li&gt;
+&lt;li&gt;The SCM is not accessible for any of them.&lt;/li&gt;
+&lt;li&gt;The Web App Service "Deployment options" blade does not work.&lt;/li&gt;
+&lt;li&gt;The Web App Service "Diagnostics logs" blade does not work.&lt;/li&gt;
+&lt;li&gt;The Azure Status pages says that all services are running normally.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;7:31 PM PST - 6 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;I notice that the Azure Web App &lt;strong&gt;Deployment options&lt;/strong&gt; button is non-responsive for more than one of my sites &lt;a href="https://twitter.com/dicshaunary/status/784219511377448960"&gt;and share this via Twitter&lt;/a&gt;. I replicate the problem in Edge, Firefox, and Chrome with private/incognito windows. I capture this console output in Chrome: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Document was loaded from Application Cache with manifest https://portal.azure.com/?feature.appcache=true&amp;amp;l=en.en-us&amp;amp;cdnIndex=4
+Application Cache Checking event
+Application Cache NoUpdate event
+
+         _    _____   _ ___ ___
+        /_\  |_  / | | | _ \ __|           Want to build awesome
+  _ ___/ _ \__/ /| |_| |   / _|___ _ _     web applications
+(___  /_/ \_\/___|\___/|_|_\___| _____)    like this one?
+   (_______ _ _)         _ ______ _)_ _    Join us.
+          (______________ _ )   (___ _ _)  http://aka.ms/BuildThis
+
+
+5.0.302.509 (production#e66c4a9.161006-1215)
+Session: 8fed15f9284c423e8d86d35209d3491f
+Document was loaded from Application Cache with manifest https://portal.azure.com/AzureHubs/Hubs?feature.appcache=true&amp;amp;l=en.en-us&amp;amp;cdnIndex=4
+Application Cache Checking event
+Application Cache NoUpdate event
+Adding master entry to Application Cache with manifest https://stamp2.app.insightsportal.visualstudio.com/InsightsExtension?feature.appcache=true&amp;amp;l=en.en-us&amp;amp;cdnIndex=4
+Adding master entry to Application Cache with manifest https://web1.appsvcux.ext.azure.com/websites/WebsitesContent/WebsitesIndex?feature.appcache=true&amp;amp;l=en.en-us&amp;amp;cdnIndex=4
+Application Cache NoUpdate event
+Adding master entry to Application Cache with manifest https://insights1.exp.azure.com/insights/InsightsContent/InsightsIndex?feature.appcache=true&amp;amp;l=en.en-us&amp;amp;cdnIndex=4
+Application Cache NoUpdate event
+[fx]  8:04:07 PM MsPortalImpl/Base/Base.Selectable2 Base.Selectable2: message: Cannot read property 'supplyInitialData' of undefined
+stack: TypeError: Cannot read property 'supplyInitialData' of undefined
+    at i (https://portal.azure.com/Content/Dynamic/MsPortalFx_C2AE501C18F3AB18576CCB5119954C1FE01266B9.js:261:512)
+    at new i (https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???=**WebsitesExtension/TypeScript/_generated/Blades/TroubleshootBlade:42:147)
+    at https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???js?root=*WebsitesExtension/TypeScript/Search/WebsiteBrowseViewModel:15:860
+    at h (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:453)
+    at e.promiseDispatch.s (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:731)
+    at t.f.promiseDispatch (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:229:931)
+    at https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:228:676
+    at MessagePort.t (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:233:201)
+
+[HubsExtension]  8:04:13 PM MsPortalFx.Base.Diagnostics.ErrorReporter 1 MsPortalFx.Base.Diagnostics.ErrorReporter: message: Cannot read property 'supplyInitialData' of undefined
+stack: TypeError: Cannot read property 'supplyInitialData' of undefined
+    at i (https://portal.azure.com/Content/Dynamic/MsPortalFx_C2AE501C18F3AB18576CCB5119954C1FE01266B9.js:261:512)
+    at new i (https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???=**WebsitesExtension/TypeScript/_generated/Blades/TroubleshootBlade:42:147)
+    at https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???js?root=*WebsitesExtension/TypeScript/Search/WebsiteBrowseViewModel:15:860
+    at h (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:453)
+    at e.promiseDispatch.s (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:731)
+    at t.f.promiseDispatch (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:229:931)
+    at https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:228:676
+    at MessagePort.t (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:233:201)
+
+[WebsitesExtension]  8:04:15 PM MsPortalFx.Base.Diagnostics.ErrorReporter 1 MsPortalFx.Base.Diagnostics.ErrorReporter: message: Cannot read property 'supplyInitialData' of undefined
+stack: TypeError: Cannot read property 'supplyInitialData' of undefined
+    at i (https://portal.azure.com/Content/Dynamic/MsPortalFx_C2AE501C18F3AB18576CCB5119954C1FE01266B9.js:261:512)
+    at new i (https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???=**WebsitesExtension/TypeScript/_generated/Blades/TroubleshootBlade:42:147)
+    at https://az772487.vo.msecnd.net/websites/Content/Dynamic/AmdBundleDefinition???js?root=*WebsitesExtension/TypeScript/Search/WebsiteBrowseViewModel:15:860
+    at h (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:453)
+    at e.promiseDispatch.s (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:235:731)
+    at t.f.promiseDispatch (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:229:931)
+    at https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:228:676
+    at MessagePort.t (https://portal.azure.com/Content/Dynamic/MsPortalFxStable_AD3A97F8E4DFEDF813AEDF50EB2617D3D2774D04.js:233:201)
+
+GET https://management.azure.com/subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXX???erverfarms/DefaultServerFarm/usages?api-version=2015-08-01&amp;amp;_=1475809435244 408 (Request Timeout)
+POST https://web1.appsvcux.ext.azure.com/websites/api/Websites/GetScmInfo 408 (Request Timeout)
+POST https://web1.appsvcux.ext.azure.com/websites/api/Websites/GetApplicationDiagnosticsSettings 408 (Request Timeout)
+Application Cache Checking event
+Application Cache NoUpdate event
+Application Cache Checking event
+Application Cache NoUpdate event
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;8:21 PM PST - 6 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;I notice that the following eight sites are down in my Azure App Services despite my not having done anything to any of these sites in several weeks.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;de-en.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;gardenfaire2.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;lrj-global.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;orchard-theme-machine-designer.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;singular-biogenics.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;tsokh.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;ssiproud.azurewebsites.net&lt;/li&gt;
+&lt;li&gt;zolob.azurewebsites.net&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In contrast, bigfont1.azurewebsites.net is up, and shares both the same Azure subscription and the following properties: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Resource group: Default-Web-WestUS&lt;/li&gt;
+&lt;li&gt;App Service plan/pricing tier: DefaultServerFarm&lt;/li&gt;
+&lt;li&gt;Location: West US&lt;/li&gt;
+&lt;li&gt;Last change by me: Weeks or months ago&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;8:30 PM PST - 6 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;I &lt;a href="https://social.msdn.microsoft.com/Forums/en-US/67bdd3bc-6cda-41e3-9ad3-b9367ff3b5cf"&gt;raise the issue on social.msdn.microsoft.com.&lt;/a&gt; Support suggests clearing the cache, trying other browsers, and troubleshooting Kudu deployments. &lt;/p&gt;
+
+&lt;h1&gt;8:30 am PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;A MSFT engineer tells me this: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;the API back-end was having some issues last night which is why you were seeing time outs in the UI.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: This is the very first piece of useful information that I have received from MSFT. It is 13 hours since I asked about the situation.&lt;/p&gt;
+
+&lt;h1&gt;8:30 am PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;I open support ticket &lt;code&gt;116100714772026&lt;/code&gt; from the Azure Portal. The ticket asks about two problems: &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The Deployment options button is broken. &lt;/li&gt;
+&lt;li&gt;Eight of my sites are down.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;10:30 am PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;MSFT Support calls me, gathers information about problem 1, and tells me to open another ticket for problem 2. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Technical support at MSFT can handle only one problem per support ticket. If you have two questions, then open two support tickets; otherwise, you will have to wait an additional 2 hours to receive a response about your second question.&lt;/p&gt;
+
+&lt;h1&gt;10:45 am PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;To address problem 2, I open support ticket &lt;code&gt;116100714772641&lt;/code&gt; from the Azure Portal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Eight sites are still down sixteen hours after raising the concern.&lt;/p&gt;
+
+&lt;h1&gt;11:31 am PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;Direct navigation to the de-en.azurewebsites.net site gives an HTTP 404. Investigation in the Azure portal shows these results:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Overview &gt; Monitoring&lt;/strong&gt;: 0 HTTP Server Errors. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Activity log &gt; Timespan Last 2 weeks&lt;/strong&gt;: No results to display.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Diagnose and solve problems &gt; Resource Health&lt;/strong&gt;: Available. NOTE: It takes about 75 seconds for the blade to display itself.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Diagnostic logs&lt;/strong&gt;: The blade opens but is non-responsive. It instead displays "WEBSITELOGSPART."&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;12:15 pm PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;MSFT technical support contacts me about the second ticket. The diagnosis is that &lt;code&gt;DefaultServerFarm&lt;/code&gt; has run out of memory because it has 29 Web Apps and 07 Slots. (This turns out to be wrong).&lt;/p&gt;
+
+&lt;p&gt;In other words, support thinks we have a problem running out of RAM. (I can see this in the Metrics per Instance for the App Service Plan). In the short term, support says I can scale up e.g from the S1 to S2 App Service Plan. &lt;/p&gt;
+
+&lt;p&gt;I try this and receive the following error: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Failed to update App Service plan DefaultServerFarm: Heuristics indicate WebApiClient request timed out. Uri: https://management.azure.com/subscriptions/XXXX-XXXX-XXXX-XXXX-XXXXX/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/serverfarms/DefaultServerFarm?api-version=2014-06-01 Timeout: 00:01:00&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I try a second time and receive the following error: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Failed to update App Service plan DefaultServerFarm: {"Code":"Conflict","Message":"Cannot modify this web hosting plan because another operation is in progress. Conflicting operation details: Id: XXXX-XXXX-XXXX-XXXX-XXXX, OperationName: UpdateServerFarm, CreatedTime: 10/7/2016 7:29:17 PM, WebSystemName: websites, SubscriptionName: XXXX-XXXX-XXXX-XXXX-XXXX, WebspaceName: westuswebspace, SiteName: , SlotName: , ServerFarmName: DefaultServerFarm","Target":null,"Details":[{"Message":"Cannot modify this web hosting plan because another operation is in progress. Conflicting operation details: Id: XXXX-XXXX-XXXX-XXXX-XXXX, OperationName: UpdateServerFarm, CreatedTime: 10/7/2016 7:29:17 PM, WebSystemName: websites, SubscriptionName: XXXX-XXXX-XXXX-XXXX-XXXX, WebspaceName: westuswebspace, SiteName: , SlotName: , ServerFarmName: DefaultServerFarm"},{"Code":"Conflict"},{"ErrorEntity":{"Code":"Conflict","Message":"Cannot modify this web hosting plan because another operation is in progress. Conflicting operation details: Id: XXXX-XXXX-XXXX-XXXX-XXXX, OperationName: UpdateServerFarm, CreatedTime: 10/7/2016 7:29:17 PM, WebSystemName: websites, SubscriptionName: XXXX-XXXX-XXXX-XXXX-XXXX, WebspaceName: westuswebspace, SiteName: , SlotName: , ServerFarmName: DefaultServerFarm","ExtendedCode":"11008","MessageTemplate":"Cannot modify this web hosting plan because another operation is in progress. Conflicting operation details: {0}","Parameters":["Id: XXXX-XXXX-XXXX-XXXX-XXXX, OperationName: UpdateServerFarm, CreatedTime: 10/7/2016 7:29:17 PM, WebSystemName: websites, SubscriptionName: XXXX-XXXX-XXXX-XXXX-XXXX, WebspaceName: westuswebspace, SiteName: , SlotName: , ServerFarmName: DefaultServerFarm"],"InnerErrors":null}}],"Innererror":null}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Since those errors are happening, support suggests waiting an hour and then trying a third time. &lt;/p&gt;
+
+&lt;p&gt;After having waited for an hour, support confirms that we succeeded in scaling up to more RAM. Unfortunately, this did not resolve the problem. Despite having a lot of RAM, we still have the original problems on all eight sites. &lt;/p&gt;
+
+&lt;h1&gt;4:09 PM PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/dicshaunary/status/784531236102569984"&gt;I tweet to @davidebbo to ask&lt;/a&gt; if he know what's happening. He commits to investigate.&lt;/p&gt;
+
+&lt;h1&gt;4:55 PM PST - 7 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;The original problems remain unresolved. Professional support tells me that there is nothing more they can do for now. &lt;/p&gt;
+
+&lt;h1&gt;5:00 PM PST - 07 Oct 2016&lt;/h1&gt;
+
+&lt;p&gt;@davidebbo replies to me that it's fixed it and indeed it is.&lt;/p&gt;
+
+&lt;h1&gt;My Concerns&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Will MSFT billing compensate me for the 24-hours of downtime and personal troubleshooting work? Will I need to ask for this compensation or will it be forthcoming? &lt;/li&gt;
+&lt;li&gt;Will MSFT billing charge me for the two professional support tickets that are related to this problem?&lt;/li&gt;
+&lt;li&gt;Will MSFT billing charge me for scaling up the site to "fix the RAM problem"? Will I need to ask them not to charge me or will someone handle this for me?&lt;/li&gt;
+&lt;li&gt;Will MSFT fix the Azure Status page, so that it shows problems when problems exist?&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Fri, 07 Oct 2016 17:05:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/azure-web-app-service-and-portal-downtime-analysis-06-october-2017</guid></item><item><title>Dependency injection with and without inheritance</title><link>http://www.muddlingthru.ca:80/dependency-injection-with-and-without-inheritance</link><description>&lt;blockquote&gt;
+  &lt;p&gt;Dependency injection is valuable in languages that lack inheritance and becomes more powerful in languages that have inheritance.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Without inheritance, dependency injection lets the container &lt;strong&gt;control constructor arguments&lt;/strong&gt;. "Resolve for me an object of type &lt;code&gt;Carrot&lt;/code&gt; and use whatever constructor arguments you would like when creating that object."&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;With inheritance, dependency injection lets the container &lt;strong&gt;also control implementation&lt;/strong&gt;. "Resolve for me an object of type &lt;code&gt;IVegetable&lt;/code&gt; and use whatever implementation and/or constructor arguments you would like."&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Related: http://stackoverflow.com/q/39885560/1108891&lt;/p&gt;
+</description><pubDate>Thu, 06 Oct 2016 01:32:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/dependency-injection-with-and-without-inheritance</guid></item><item><title>Technical Writing Checklist</title><link>http://www.muddlingthru.ca:80/technical-writing-checklist</link><description>&lt;ul&gt;
+&lt;li&gt;The content is accurate. &lt;/li&gt;
+&lt;li&gt;The spelling is correct. &lt;/li&gt;
+&lt;li&gt;The grammar is correct. &lt;/li&gt;
+&lt;li&gt;The formatting is clean.&lt;/li&gt;
+&lt;/ul&gt;
+</description><pubDate>Fri, 16 Sep 2016 17:48:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/technical-writing-checklist</guid></item><item><title>Connect shapes and lines in Microsoft Word</title><link>http://www.muddlingthru.ca:80/connect-shapes-and-lines-in-microsoft-word</link><description>&lt;p&gt;We can draw a line between text boxes, so the line moves and adapts with the text boxes.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Insert&lt;/li&gt;
+&lt;li&gt;Shapes &lt;/li&gt;
+&lt;li&gt;New Drawing Canvas&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now, connected lines move and adapt. Hooray!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/Media/Default/Website-UI-Uploads/Capture-1.PNG" alt="enter image description here" /&gt;&lt;/p&gt;
+</description><pubDate>Thu, 15 Sep 2016 17:46:00 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/connect-shapes-and-lines-in-microsoft-word</guid></item><item><title>Troubleshoot NPM deployments to Azure Web Apps</title><link>http://www.muddlingthru.ca:80/troubleshoot-npm-deployments-to-azure-web-apps</link><description>&lt;p&gt;Sometimes &lt;code&gt;npm install&lt;/code&gt; and the subsequent build tasks work locally but fail in the remote Azure Web App. &lt;/p&gt;
+
+&lt;p&gt;Ensure your remote is running the same Node and NPM versions as your local is.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;node -v
+npm -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delete the remote's &lt;code&gt;node_modules&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install -g rimraf
+rimraf node_modules
+&lt;/code&gt;&lt;/pre&gt;
+</description><pubDate>Sat, 10 Sep 2016 07:03:15 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/troubleshoot-npm-deployments-to-azure-web-apps</guid></item><item><title>Let people/visitors contact you from your website</title><link>http://www.muddlingthru.ca:80/let-people-visitors-contact-you-from-your-website</link><description>&lt;p&gt;There are three ways to let people that visit your site contact you. Here they are in increasing complexity.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;An email address in the site's footer, header, and/or other page. I.e. "For questions/comments, contact hello@youraddress.com." This is often the best bet.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An email form that people can fill out on the site. It includes space for 1. a return address, 2. a subject and 3. a body message. Emails are delivered privately to your "hello@youraddress.com" inbox just like any other email would be.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A comments form that people can fill out on the site. It includes space for 1. a return address and 2. a body message. Comments appear publicly on the site for anyone to read, and you can moderate those comments (edit, delete).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Which is your preference?&lt;/p&gt;
+</description><pubDate>Wed, 31 Aug 2016 19:50:05 GMT</pubDate><guid isPermaLink="true">http://www.muddlingthru.ca:80/let-people-visitors-contact-you-from-your-website</guid></item></channel></rss>

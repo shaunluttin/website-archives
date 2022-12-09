@@ -1,0 +1,114 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/a-quick-code-review-with-the-benevolent-orchard-dictator-emeritus by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:26 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - A Quick Code Review with the Benevolent Orchard Dictator Emeritus</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>A Quick Code Review with the Benevolent Orchard Dictator Emeritus</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/orchard-cms.html">orchard-cms</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Tuesday, September 2, 2014 7:04:49 PM</div>
+            </div>
+    </header>
+    <p><p>I spent an hour with Bertrand Le Roy on the phone today. This cost me some money and was worth it. His facial expressions alone told me much of value about my code. I’m a lone developer.&nbsp; As such, I work mostly in a vacuum, so what I wanted was: </p> <ol> <li>Code Review  <li>Development Workflow Review  <li>Three or so areas of improvement on which to focus for the next three months or so.</li></ol> <p>Here are some notes on my take home message from the call. These notes may well only be useful to me. They are here for future reference:</p> <h2>There are three valid ways to render a projection/query in a custom shape layout.</h2> <ol> <li>render the content item  <ol> <li>increased control  <li>decreased flexibility</li></ol> <li>use the @Display(shape) method  <ol> <li>increased reusability through alternates  <li>clean inversion of control through placement.info  <li>this is the canonical though not necessarily the best way  <li>if we’re going to do it this way, though, then why not just use one of the build in query layouts instead of a custom shape layout.</li></ol> <li>use the @Display(shape.PartName), to create highly specific zones, then target those zones through placement  <ol> <li>this is the middle ground  <li>it has less flexibility than rendering the contentItem  <li>it is easier to understand, because of it has less inversion of control than does using @Display(shape)</li></ol></li></ol> <h2>Orchard uses deferred execution to create shapes from DriverResults.</h2> <ol> <li>drivers use lambdas  <li>this delays execution  <li>Orchard will only execute the lambda if needed (e.g. placement)  <li>I.e. the driver result contains instructions for how to build a shape, and Orchard will later decide whether to run those instructions.  <li>so, just because we call a driver, doesn’t necessarily mean that we’re going to be making a database call</li></ol> <h2>Ways to handle the limitations of projections &amp; queries.</h2> <ol> <li>whenever possible, create queries in the Orchard UI and leverage the built-in layouts  <li>if you have a more complex query with unusual sorts/groupings, then take one of two approaches  <ol> <li>for smaller numbers of items, it’s just barely acceptable to group/sort them in memory – try to do the sorting/grouping in a controller, though, not in a view, and do it with <em>as few database calls as possible</em>  <li>for larger numbers of items, use a controller action and build the query with HQL – this will make things like pagination more effecient</li></ol> <li>note that sorting/grouping on field values can be hard if the field lacks an indexing table  <li>also note that the default in the admin interface is a lazy fetch; so, if you know you’re going to be using a bunch of parts stored in tables, set an eager fetch instead</li></ol> <h2>Here are some areas for code improvement.</h2> <ol> <li>My code is pretty clean. It is factored well. I have short methods.  <li>Focus on using Mini Profiler to refactor and reduce network calls. Projections, for instance, can be network heavy.  <li>Don’t uses Ticks as a uniqueId. Rather, increment a counter. Ticks is not unique – don’t do it.  <li>Err on the side of using var – you repeat yourself less.  <li>If I need a transient object (i.e. a bag of properties) to only use in the view, use anonymous objects (or ViewModels) instead of ExpandoObjects.  <li>Create shapes on the fly instead of using @helper methods in Orchard.</li></ol><pre>@Display.MyShape(MyProperty: 42, OtherProperty:43)
+@{ var shape = New.MyShape(...) }
+@Display(shape)
+</pre></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn3d85.html?ReturnUrl=%2Fa-quick-code-review-with-the-benevolent-orchard-dictator-emeritus" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/a-quick-code-review-with-the-benevolent-orchard-dictator-emeritus by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:26 GMT -->
+</html>

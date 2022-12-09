@@ -1,0 +1,187 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/git-deploy-to-azure-web-app-while-keeping-assemblies-out-of-version-control by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:04 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Git Deploy to Azure Web App While Keeping Assemblies out of Version Control</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Git Deploy to Azure Web App While Keeping Assemblies out of Version Control</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/git.html">git</a>, <a href="Tags/git-deploy.html">git-deploy</a>, <a href="Tags/azure.html">azure</a>, <a href="Tags/website.html">website</a>, <a href="Tags/web-app.html">web-app</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Thursday, April 9, 2015 4:25:00 PM</div>
+            </div>
+    </header>
+    <p>Visual Studio -> GitHub -> Azure Web App</p>
+
+<p>How do we keep all assemblies (dll files) and other build results out of version control?</p>
+
+<p>Sure, we can do this...</p>
+
+<pre><code>git rm --cached *.dll
+git rm --cached bin\*
+git rm --cached obj\*
+</code></pre>
+
+<p>...but it might cause a few problems.</p>
+
+<blockquote>
+  <p>error MSB3030: Could not copy the file someFile.dll because it was not found.</p>
+</blockquote>
+
+<p>That's because we ran <code>git rm --cached *.dll</code>, which means that any assemblies that we need to deploy are still going to be part of the project without being deployed to Azure.</p>
+
+<p>To fix that, we could exclude any *.dll files from our *.csproj. The problem though is that we need to reference these assemblies, they aren't part of the framework, and NuGet doesn't handle them appropriately.</p>
+
+<h2>Don't Do This:</h2>
+
+<p><img src="Media/Default/Website-UI-Uploads/dll-version-control.png" alt="Exclude From Project" /></p>
+
+<p>If we did do that, we might receive an error similar to this, because the Azure Web App is missing the assemblies that we excluded from the project.</p>
+
+<blockquote>
+  <p>Server Error in '/' Application.</p>
+  
+  <p>Unable to load the native components of SQL Server Compact corresponding to the ADO.NET provider of version 8876. Install the correct version of SQL Server Compact. Refer to KB article 974247 for more details.</p>
+  
+  <p>Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.</p>
+  
+  <p>Exception Details: System.Data.SqlServerCe.SqlCeException: Unable to load the native components of SQL Server Compact corresponding to the ADO.NET provider of version 8876. Install the correct version of SQL Server Compact. Refer to KB article 974247 for more details.</p>
+</blockquote>
+
+<p>That's happening because we have an assembly on our local machine, that we've excluded from version control and excluded from our project. The Azure Web App needs it. </p>
+
+<p>To resolve this, look at the location of each assembly that the *.csproj references. If we're using Visual Studio, here's how. </p>
+
+<ol>
+<li>Open the Solution Explorer. </li>
+<li>Expand the References node. </li>
+<li>Press <code>F4</code> to open the Properties Window. </li>
+<li>Click through all the references to see the path of each. </li>
+</ol>
+
+<p>Here are some examples.  Ideally, we can have NuGet handle most if not all of them.</p>
+
+<h2>NuGet handles this assembly.</h2>
+
+<p>We know because the Path points to the <code>packages</code> directory. We don't have to add it to version control.</p>
+
+<p><img src="Media/Default/Website-UI-Uploads/dll-version-control-1-1.png" alt="NuGet handles it." /></p>
+
+<h2>The framework handles this assembly.</h2>
+
+<p>We don't have to add it to version control, because it's in <code>\Reference Assemblies\Microsoft\Framework\...</code></p>
+
+<p><img src="Media/Default/Website-UI-Uploads/dll-version-control-2.png" alt="The Framework handles it." /></p>
+
+<h2>We must handle these.</h2>
+
+<p>NuGet doesn't add these to the packages directory nor framework doesn't contain these. So, we need to add them to our version control, include them in our csproj, and set the properties to </p>
+
+<pre><code>Build Action: None
+Copy to Output Directory: Do Not Copy
+</code></pre>
+
+<p><img src="Media/Default/BlogImages/dll-version-control-3-1.png" alt="We must add these assemblies to version control." /></p>
+
+<p>The result, oddly enough is to add the assembly to the <code>bin</code> on build.</p>
+
+<p><img src="Media/Default/BlogImages/dll-version-control-4.png" alt="Build Action:None Result" /></p>
+
+<p>Now, our repository does contain some assemblies, and there doesn't seem to be any way around this. If you know a way to keep assemblies out of the repository in situation like that, please chat me up on <a href="https://twitter.com/dicshaunary">Twitter</a>. </p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn589e.html?ReturnUrl=%2Fgit-deploy-to-azure-web-app-while-keeping-assemblies-out-of-version-control" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/git-deploy-to-azure-web-app-while-keeping-assemblies-out-of-version-control by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:09 GMT -->
+</html>

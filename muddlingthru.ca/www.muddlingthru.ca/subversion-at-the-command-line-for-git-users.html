@@ -1,0 +1,218 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/subversion-at-the-command-line-for-git-users by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:18:22 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Subversion at the Command Line for Git Users</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Subversion at the Command Line for Git Users</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/git.html">git</a>, <a href="Tags/svn.html">svn</a>, <a href="Tags/version-control.html">version-control</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Friday, February 27, 2015 8:20:00 PM</div>
+            </div>
+    </header>
+    <p>I love the command line and have experience with <code>git</code>. I shied away from <code>git svn</code> because it might confuse my team. So here is my list of <code>svn</code> usage and commands and their <strong>similar</strong> commands in <code>git</code>. This is a work in progress. If anything doesn't seem quite right, please let me know.</p>
+
+<h2>Documentation</h2>
+
+<ul>
+<li><strong>svn 1.4</strong> http://svnbook.red-bean.com/en/1.4/svn-book.html</li>
+<li><strong>svn 1.7</strong> http://svnbook.red-bean.com/en/1.7/svn-book.html</li>
+</ul>
+
+<h2>Working with remotes</h2>
+
+<p><code>svn checkout &lt;uri&gt;</code> vs <code>git clone &lt;uri&gt;; git pull;</code></p>
+
+<p><code>svn update -r238</code> vs <code>git checkout fder3fd</code></p>
+
+<ul>
+<li>checkout a working copy</li>
+</ul>
+
+<p><code>svn info .</code> vs <code>git remote -v</code></p>
+
+<ul>
+<li>show the remote uri</li>
+<li>git can have multiple remotes, svn can have only one</li>
+</ul>
+
+<p><code>svn ls &lt;uri&gt;/branches --verbose</code> vs <code>git branch --all -vv</code></p>
+
+<ul>
+<li>list details of all branches</li>
+<li>in git this includes local and remote branches</li>
+</ul>
+
+<p><code>svn switch&lt;uri&gt;/branches/&lt;branch_name&gt;</code> vs <code>git checkout &lt;branch_name&gt;</code></p>
+
+<ul>
+<li>switch from one branch to another</li>
+</ul>
+
+<p><code>svn status</code> vs <code>git status</code></p>
+
+<h2>Add / commit / push</h2>
+
+<p><code>svn commit -m "Some message"</code> vs <code>git commit -m "Some message"; git push</code></p>
+
+<ul>
+<li>in subversion, a commit is equivalent to a git commit+push</li>
+<li>also, we don't have to stage tracked items </li>
+</ul>
+
+<h2>Fixing mistakes</h2>
+
+<p><code>svn revert foo.txt</code> vs <code>git checkout -- foo.txt</code></p>
+
+<p><code>svn revert * --recursive</code> vs <code>git reset --hard HEAD</code></p>
+
+<ul>
+<li>remove all local <em>modifications</em> </li>
+<li>without touching <em>untracked</em> files</li>
+</ul>
+
+<h2>Branching and merging</h2>
+
+<p><code>svn copy &lt;url&gt; branches/mybranch</code> : <code>git checkout -b mybranch</code></p>
+
+<h2>History</h2>
+
+<p><code>svn log -limit 5</code> vs <code>git log -5</code></p>
+
+<p><code>svn log --revision 1:HEAD</code></p>
+
+<p><code>svn log --stop-on-copy</code></p>
+
+<ul>
+<li>determine the ancestor of a branch</li>
+<li>use to figure out with which branch merges are possible</li>
+</ul>
+
+<h2>Using PowerShell</h2>
+
+<p><code>@(svn status) -match '^M'</code></p>
+
+<ul>
+<li>list only modified files</li>
+</ul>
+
+<p><code>@(svn status) -match '(^  L)</code></p>
+
+<ul>
+<li>list only locked files</li>
+</ul>
+
+<p><code>@(svn status) -match '^\?' | % { ($_ -split '\?\s*')[1] } | % { ri $_ -force -recurse }</code> vs <code>git clean -f -d</code></p>
+
+<ul>
+<li>remove all <em>untracked</em> files</li>
+<li>without touching <em>tracked</em> files</li>
+<li><code>@(svn status)</code> wraps the output into an array</li>
+<li><code>-match '^\?'</code> filters on lines that start with an <code>?</code></li>
+<li><code>($_ -split '\?\s*')[1]</code> retrieves just the file or directory</li>
+</ul>
+
+<p><code>(svn help status)[0..25]</code></p>
+
+<ul>
+<li>Limit the <code>svn help &lt;command&gt;</code> output to just the lines you want</li>
+<li>for instance, lines zero to 25: </li>
+</ul>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn0ad1.html?ReturnUrl=%2Fsubversion-at-the-command-line-for-git-users" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/subversion-at-the-command-line-for-git-users by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:18:22 GMT -->
+</html>

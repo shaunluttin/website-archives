@@ -1,0 +1,10 @@
+<rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
+  <service>
+    <engineName>Orchard CMS</engineName>
+    <engineLink>http://orchardproject.net</engineLink>
+    <homePageLink>http://orchardproject.net</homePageLink>
+    <apis>
+      <api name="MetaWeblog" preferred="true" apiLink="http://www.muddlingthru.ca/XmlRpc" blogID="12" />
+    </apis>
+  </service>
+</rsd>

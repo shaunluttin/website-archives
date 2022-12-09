@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/computer-to-computer-communication by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:16:37 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Computer-to-Computer Communication</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Computer-to-Computer Communication</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/computer-science.html">computer-science</a>, <a href="Tags/communication.html">communication</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Sunday, January 3, 2016 12:00:28 AM</div>
+            </div>
+    </header>
+    <p><p>This is an ongoing brain-dump/exploration of communication between/among computers. It’s motivated in part by wanting to setup control systems for household and industrial system. For instance, what if we would like to: </p> <ol> <li> Gather moisture data from a moisture sensor?</li> <li>Control the location of a solar panel? </li> <li>Titrate down the concentration of an aquarium nutrient?</li> <li>Link together several single board computers for extra processing power?</li> <li>Send an SMS message when a moisture detector gets wet?</li></ol> <p>What bus or network connection should we use? What protocol should we use over that connection? What serialization of commands/data/objects should we use?</p> <p><a title="https://en.wikipedia.org/wiki/Category:Computer_buses" href="https://en.wikipedia.org/wiki/Category:Computer_buses">https://en.wikipedia.org/wiki/Category:Computer<em>buses</a></p> <p><a href="Media/Default/Windows-Live-Writer/Computer-to-Computer-Communication_E091/image_4.png"><img title="image" style="margin: 0px; display: inline" alt="image" src="Media/Default/Windows-Live-Writer/Computer-to-Computer-Communication_E091/image_thumb_1.png" width="240" height="88"></a></p> <p><a title="https://en.wikipedia.org/wiki/Telecommunications_network" href="https://en.wikipedia.org/wiki/Telecommunications_network">https://en.wikipedia.org/wiki/Telecommunications</em>network</a></p> <p><a href="Media/Default/Windows-Live-Writer/Computer-to-Computer-Communication_E091/image_6.png"><img title="image" style="display: inline" alt="image" src="Media/Default/Windows-Live-Writer/Computer-to-Computer-Communication_E091/image_thumb_2.png" width="240" height="93"></a></p> <p><a title="https://en.wikipedia.org/wiki/List_of_device_bit_rates#Computer_buses" href="https://en.wikipedia.org/wiki/List_of_device_bit_rates#Computer_buses">https://en.wikipedia.org/wiki/List<em>of</em>device<em>bit</em>rates#Computer_buses</a> List of device bit rates.</p> <p>Brainstorm: Hierarchies</p> <ul> <li>Peer-to-peer</li> <li>Client-Server</li></ul> <p>Brainstorm: Connection related terminology</p> <ul> <li>Bus, moves data between components, </li> <li>Network, moves data between components, </li> <li>Differences between bus and network.</li> <ul> <li>power is provided by a bus to the connected component</li> <li>e.g. the USB port powers the mouse whereas the Wireless card does not power the Internet</li></ul> <li>System bus, connects CPU to RAM (the computer to the memory)</li> <li><strong>More Internal</strong> </li> <ul> <li>&lt;---System Bus---</li> <li>Front-Side Bus---</li> <li>Expansion Bus---</li> <li>Peripheral Bus---&gt; <strong>More External</strong></li></ul></ul> <p>Brainstorm: lines (in the sand) of distinction among communication methods</p> <ul> <li>serial vs parallel </li> <li>computer-to-computer vs computer-to-device</li> <li>internal vs external</li> <ul> <li>internal connects all the parts inside a computer, CPU to RAM to Motherboard. Quick, independent</li> <li>extenal connects parts outside, printer, mouse, keyboard… (hard drive? internet?)</li></ul> <li>system vs front-side vs expansion vs peripheral</li></ul> <p>Brainstorm: What are the levels of CPU-to-CPU communication?</p> <ul> <li>Application</li> <li>System</li> <li>Physical</li> <li>Human Understanding</li> <li>English</li> <li>Binary</li> <li>Electronic</li></ul> <p>Brainstorm: How can we physically communicate from one computer to another?</p> <ul> <li>USB – connect peripherals, lower performances than SATA, use where SATA isn’t necessary, e.g. in a mouse</li> <li>Ethernet.</li> <li>WiFi.</li> <li>Cable (Coaxial Cable)</li> <li>HDMi</li> <li>DisplayPort</li> <li>Light</li> <li>Electricity</li> <li>BlueTooth</li> <li>Radio</li> <li>FireWire</li> <li>SATA – connect hard drives to the system bus</li> <li>Expansion Cards – connect directly to the system bus</li> <li>PCI</li> <li>SCSI</li> <li>Serial ATA</li></ul> <p>Brainstorm: Use cases</p> <ul> <li>CPU to Hard drives, tape, DVD, i.e. persistence, I/O</li> <li>CPU to RAM</li> <li>CPU to CPU</li></ul> <p>Brainstorm: What can use to communicate over those physical mediums?</p> <ul> <li>HTTP</li> <li>FTP</li> <li>Plain old binary pulses.</li></ul> <p>Brainstorm: What languages can we use to store more complex stuff?</p> <ul> <li>HTML/CSS/JavaScript – the representations of the web.</li> <li>XML – the representations of hierarchical data.</li> <li>JSON – more hierarchical data.</li> <li>Binary</li> <li>ASCII</li> <li>Unicode</li></ul> <p>Audio/Visual</p> <ul> <li>DVI</li> <li>VGA</li> <li>HTMi</li> <li>DisplayPort</li></ul> <p>Emerging Questions</p> <ul> <li>What differentiates network communication vs bus communication? When should we use each?</li> <li>What differentiates internal vs external buses? When should we use each?</li> <li>How does a GPOI pin differ from a bus?</li> <li>What bus/network choices are optimal (and/or practical) for use cases:</li> <ul> <li>timing sensitive communication?</li> <li>client-server?</li> <li>peer-to-peer?</li> <li>control systems?</li> <li>high throughput?</li><!--EndFragment--></ul></ul> <p>Some broad, sweeping generalizations that are emerging from my reading, though without citations: </p> <ul> <li>USB is for connecting peripheral devices to a computer (e.g. mouse, external HDD, keyboard)</li> <li>The practical differentiators among internal bus, external bus, and network communication are blurring.</li> <li>A pin is a lower level then a bus; a pin is a single on/off that communicates with a CPU; we connect to pins with raw wire.</li> <li>A port has a different meaning in <a href="https://en.wikipedia.org/wiki/Computer_port_(hardware)">hardware</a> than is does in software. For instance, USB is the overarching communication strategy, and it involves both a USB port and a USB cable.</li></ul> <p>If you expected to find answer, you came to the wrong blog. <img class="wlEmoticon wlEmoticon-smile" style="border-top-style: none; border-left-style: none; border-bottom-style: none; border-right-style: none" alt="Smile" src="Media/Default/Windows-Live-Writer/Computer-to-Computer-Communication_E091/wlEmoticon-smile_2.png"></p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn2b35.html?ReturnUrl=%2Fcomputer-to-computer-communication" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/computer-to-computer-communication by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:16:42 GMT -->
+</html>

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/deploy-cmd-build-to-the-temporary-path by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:37 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - deploy.cmd - Build to the temporary path.</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>deploy.cmd - Build to the temporary path.</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/kudu.html">kudu</a>, <a href="Tags/git-deploy.html">git-deploy</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Saturday, May 30, 2015 4:22:27 PM</div>
+            </div>
+    </header>
+    <p><p>What does the default Kudu deploy.cmd for ASP.NET Web Apps do at the <code>msbuild</code> stage of deployment?</p> <p>First, Kudu will check whether we have set the <code>%IN_PLACE_DEPLOYMENT%</code> environmental variable to <code>1</code>. If we have not set it to <code>1</code>, Kudu will do the default deployment. Otherwise, Kudu will do an in place deployment.</p> <p>From looking at the <code>if... else...</code> statement during the <code>msbuild</code> stage of deployment, the default deployment differs from an in place deployment build in two ways:</p> <ol> <li>The default deployment passes <code>msbuild</code> the <code>/t:pipelinePreDeployCopyAllFilesToOneFolder</code> option. While I haven't found official documentation, I assume this means that <code>msbuild</code> puts the build results into a temporary folder as an intermediate step before running Kudu Sync.  <li>The default deployment also specifies <code>PackageTempDir="%DEPLOYMENTTEMP%";</code> as the directory that stores the build results before Kudu Sync copies them to the deployment directory.</li></ol> <p>In other words, the default deployment <font style="background-color: #ffff00">adds a step</font> that the in place deployment does not have. It looks something like this:</p> <ul> <li>msbuild -&gt; <font style="background-color: #ffff00">to -&gt; Temp </font><font style="background-color: #ffff00">Directory -&gt;</font> KuduSync -&gt; to Destination Directory </li></ul> <p>Here is a list of what the deploy.cmd file does at the <code>msbuild</code> stage. As mentioned above, it first checks whether were doing an in place deployment.</p> <h1>If <code>IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (</code></h1> <p>This is the default deployment.</p> <ol> <li><code>call :ExecuteCmd</code>&nbsp;&nbsp;&nbsp; Run the subroutine at the the <code>ExecuteCmd</code> label, passing it all of the following as parameters.  <li><code>"%MSBUILDPATH%"</code>&nbsp;&nbsp; Specify the path to the <code>msbuild</code> executable.  <li><code>"%DEPLOYMENTSOURCE%\MyWebApp\MyWebApp.csproj"</code>&nbsp;&nbsp; Specify the location of our <code>csproj</code> file, which contains the targets that <code>msbuild</code> will run.  <li><code>/nologo</code>&nbsp;&nbsp; Don't output the banner or copyright to the command window.  <li><code>/verbosity:m</code>&nbsp;&nbsp; Only output minimal information in the build log.  <li><code>/t:Build</code>&nbsp;&nbsp; Instruct <code>msbuild</code> to run the <code>Build</code> target. A target is a group of tasks; we can instruct <code>msbuild</code> to run one or more groups of tasks or targets.  <li><code>/t:pipelinePreDeployCopyAllFilesToOneFolder</code>&nbsp;&nbsp; Instruct <code>msbuild</code> also to run this particular, poorly documented build task, that we explained above in this blog post.  <li><code>/p:</code>&nbsp;&nbsp; Pass <code>msbuild</code> some more properties.  <ol> <li><code>_PackageTempDir="%DEPLOYMENTTEMP%";</code>&nbsp;&nbsp; Specify the directory to which <code>msbuild</code> should save build results before it uses KuduSync to copy them to the destination directory.  <li><code>AutoParameterizationWebConfigConnectionStrings=false;</code>&nbsp;&nbsp; Don't <a href="http://blogs.msdn.com/b/webdev/archive/2010/11/10/asp-net-web-application-publish-package-tokenizing-parameters.aspx">tokenize the connection string</a>.  <li><code>Configuration=Release</code>&nbsp;&nbsp;&nbsp; Build the release (as opposed to the debug) configuration.</li></ol> <li><code>/p:SolutionDir="%DEPLOYMENTSOURCE%.\"</code>&nbsp;&nbsp; Pass the directory that contains our <code>sln</code> file.  <li><code>%SCMBUILD_ARGS%</code>&nbsp;&nbsp; Allow for us to use environmental variables to pass <code>msbuild</code> further options.</li></ol> <h1>Else...</h1> <p>This is the in place deployment. Kudu will run almost the exact same <code>msbuild</code> command, but will leave out two options.</p> <ol> <li><code>call :ExecuteCmd "%MSBUILDPATH%"</code>&nbsp;&nbsp;&nbsp; <li><code>%DEPLOYMENTSOURCE%\MyWebApp\MyWebApp.csproj"</code>  <li><code>/nologo</code>  <li><code>/verbosity:m</code>  <li><code>/t:Build</code>  <li>--- this instruction is missing from the in place deployment ---  <li><code>/p:</code>  <ol> <li>--- this instruction is also missing from the in place deployment ---  <li><code>AutoParameterizationWebConfigConnectionStrings=false;</code>  <li><code>Configuration=Release</code> </li></ol> <li><code>/p:SolutionDir="%DEPLOYMENTSOURCE%.\"</code>  <li><code>%SCMBUILD_ARGS%</code></li></ol> <h1>Follow Up Question</h1> <p>Why would we elect to do an in place deployment?</p> <h1>Resources</h1> <p><a title="https://msdn.microsoft.com/en-us/library/ms164311.aspx" href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">https://msdn.microsoft.com/en-us/library/ms164311.aspx</a></p> <p><a title="https://github.com/projectkudu/kudu/wiki/Deploying-inplace-and-without-repository" href="https://github.com/projectkudu/kudu/wiki/Deploying-inplace-and-without-repository">https://github.com/projectkudu/kudu/wiki/Deploying-inplace-and-without-repository</a></p> <p><a title="https://github.com/projectkudu" href="https://github.com/projectkudu">https://github.com/projectkudu</a></p> <p><a title="https://msdn.microsoft.com/en-us/library/ms164311.aspx" href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">https://msdn.microsoft.com/en-us/library/ms164311.aspx</a></p> <p><a title="https://msdn.microsoft.com/en-us/library/ms171462.aspx" href="https://msdn.microsoft.com/en-us/library/ms171462.aspx">https://msdn.microsoft.com/en-us/library/ms171462.aspx</a></p> <p><a title="http://blogs.msdn.com/b/webdev/archive/2010/11/10/asp-net-web-application-publish-package-tokenizing-parameters.aspx" href="http://blogs.msdn.com/b/webdev/archive/2010/11/10/asp-net-web-application-publish-package-tokenizing-parameters.aspx">http://blogs.msdn.com/b/webdev/archive/2010/11/10/asp-net-web-application-publish-package-tokenizing-parameters.aspx</a></p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn9883.html?ReturnUrl=%2Fdeploy-cmd-build-to-the-temporary-path" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/deploy-cmd-build-to-the-temporary-path by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:15:37 GMT -->
+</html>

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/csharp-implicit-conversions by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:14:30 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - C# Implicit Conversions</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>C# Implicit Conversions</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/C%23-2.html">C#</a>, <a href="Tags/csharp-language-specification.html">csharp-language-specification</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Wednesday, March 18, 2015 3:37:00 PM</div>
+            </div>
+    </header>
+    <p><blockquote> <p>DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT </p></blockquote> <p>The following are my notes from section 6.1 of the C# Language Specification</p> <h2>Heuristic Model</h2> <ol> <li><strong>Definitions</strong>. Add definitions for the chapter.  <li><strong>Examples</strong>. After adding definitions, then add examples.  <li><strong>Edit</strong>. After adding examples, then edit for readability etc.</li></ol> <h2>My Personal Conventions</h2> <ul> <li>++++&gt; means "converts to" <li><strong><u>section headers</u></strong> are underlined and bold <li>terminology is <em>italicized</em> <li>everything is presented in the order that it occurred in the section</li></ul> <h2>Terminology in Order of First Occurrence</h2> <ul> <li><em>conversion</em> <ul> <li>lets us treat an expression as a specific type  <li>either convert a typed expression to another type, or  <li>give a type to an un-typed expression</li></ul> <li><em>expression</em>  <ul> <li></li></ul> <li><em>type</em> <ul> <li></li></ul> <li><em>implicit conversion</em>  <ul> <li>can be pre-defined or user-defined  <li>can occur in a variety of circumstances  <li>should always succeed and never throw exceptions  <li>types <code>object</code> and <code>dynamic</code> are considered equal for the purposes of conversion</li></ul> <li><em>explicit conversion</em>  <ul> <li>requires an explicit cast</li></ul> <li><em>dynamic conversions</em>  <ul> <li>occur only for expressions of type dynamic</li></ul> <li><strong><u>implicit identity conversion</u></strong>  <ul> <li>from any type to the same type</li></ul> <li><em>constructed type</em>  <ul> <li></li></ul> <li><strong><u>implicit numeric conversion</u></strong>  <ul> <li><code>sbyte</code>  <li><code>byte</code>  <li><code>short</code>  <li><code>ushort</code>  <li><code>int</code>  <li><code>uint</code>  <li><code>long</code>  <li><code>ulong</code>  <li><code>char</code>  <li><code>float</code>  <li>may cause loss of precision but never loss of magnitude  <li>never lose any information  <li>no implicit conversions to the <code>char</code> type</li></ul> <li><strong><u>implicit enumeration conversions</u></strong>  <ul> <li>decimal-integer-literal 0 converts to any enum-type and to any nullable types whose underlying&nbsp; type is an enum-type  <li>the latter converts to underlying type and then wraps the result</li></ul> <li><em>underlying type</em> <ul> <li></li></ul> <li><em>wrapping</em>  <ul> <li></li></ul> <li><strong><u>implicit nullable conversion</u></strong>  <ul> <li>if there is an implicit conversion for a predefined non-nullable value type,  <li>then there is also an implicit conversion for its nullable equivalent  <li><code>S</code> ++++&gt; <code>T?</code>  <li><code>S?</code> ++++&gt; <code>T?</code></li></ul> <li><em>unwrapping</em>  <ul> <li></li></ul> <li><u><strong>implicit </strong><strong>null literal conversions</strong></u>  <ul> <li>null literal to any nullable type  <li>the result is the null value of the given type</li></ul> <li><strong><u>implicit reference conversions</u></strong>  <ul> <li>any reference type ++++&gt; <code>object</code> and <code>dynamic</code>  <li>class-type <code>S</code> ++++&gt; class-type <code>T</code> provided <code>S</code> derives from <code>T</code>  <li>class-type <code>S</code> ++++&gt; interface-type <code>T</code> provided <code>S</code> implements <code>T</code>  <li>interface-type <code>S</code> ++++&gt; interface-type <code>T</code> provided <code>S</code> derives from <code>T</code>  <li>array-type <code>S</code> with element type <code>SE</code> ++++&gt; array-type <code>T</code> with element type <code>TE</code> provided  <ul> <li><code>S</code> and <code>T</code> differ only in element type (e.g. same number of dimensions)  <li>Both <code>SE</code> and <code>TE</code> are reference-types  <li>An implicit conversion exists from <code>SE</code> to <code>TE</code></li></ul> <li>array-type <code>T</code> ++++&gt; <code>System.Array</code> and the interface it implements  <li>array-type <code>S[]</code> ++++&gt; <code>IList&amp;lt;T&amp;gt;</code> and its base interfaces provided there is an implicit identity OR reference conversion from <code>S</code> to <code>T</code>  <li>delegate-type ++++&gt; <code>System.Delegate</code> and the interfaces it implements  <li>null ++++&gt; any reference-type  <li>any reference-type <code>S</code> ++++&gt; <code>T</code> provided  <ul> <li><code>S</code> has an implicit identity conversion to <code>U</code> and  <li><code>U</code> has an identity conversion to <code>T</code></li></ul> <li>any reference-type <code>S</code> to interface- or delegate-type <code>T</code> provided  <ul> <li><code>S</code> has an implicit identity or reference conversion to an interface- or delegate-type <code>U</code> and  <li><code>U</code> is variance-convertible to <code>T</code></li></ul> <li>implicit conversions involving type parameters that are known to be reference-types  <li>comments:  <ul> <li>require no checks at run-time because the compiler can prove they will always succeed  <li>never change the referential identity of the converted object, i.e.  <li>a reference conversion changes the type of the reference NOT the value nor type of the referred to object </li></ul></li></ul> <li><em>variance convertible</em>  <ul> <li>&nbsp;</li></ul> <li><strong><u>implicit boxing conversions</u></strong>  <ul> <li>comments:  <ul> <li>convert a value-type into a reference-type  <li>process for non-nullable-value-types:  <ul> <li>allocate an object instance,  <li>then copy the value-type value into that instance</li></ul> <li>process for nullable-value-types:  <ul> <li>if <code>HasValue</code> is false, then create a null reference-type  <li>otherwise, unwrap and convert the source value as normal</li></ul></li></ul> <li>non-nullable-value-type <code>S</code> ++++&gt; <code>object</code> | <code>dynamic</code> | <code>System.Valuetype</code> | any interface-type implemented by <code>S</code>  <li>enum-type ++++&gt; <code>System.Enum</code>  <li>nullable-value-type <code>S</code> ++++&gt; reference-type <code>T</code> provided a boxing conversion exists for the non-nullable-value-type  <li>value-type <code>T</code> ++++&gt; interface-type <code>I</code> provided  <ul> <li><code>T</code> has a boxing conversion to <code>J</code> and  <li><code>J</code> has an identity conversion to <code>I</code></li></ul> <li>value-type <code>T</code> ++++&gt; interface-type <code>I</code> provided  <ul> <li><code>T</code> has a boxing conversion to an interface- or delegate-type <code>J</code> and  <li><code>J</code> is variance-convertible to <code>I</code></li></ul> <li>struct ++++&gt; <code>System.ValueType</code></li></ul> <li><strong><u>implicit dynamic conversions</u></strong> </li> <ul> <li><code>dynamic</code> ++++&gt; any type <code>T</code></li> <li>it's dynamically bound: the conversion is sought at run-time to the run-time type <code>T</code></li> <li>if no conversion is found, a run-time exception will be thrown</li> <li>it is the seeking of the conversion, not the conversion itself, that throws the exception</li> <li>we can avoid dynamic binding by first converting <code>dynamic</code> to <code>object</code></li></ul> <li><em>dynamic binding</em></li> <ul> <li>the binding of the operation is suspended until run-time</li></ul> <li><strong><u>implicit constant expression conversions</u></strong> </li> <ul> <li><code>int</code> ++++&gt;</li> <ul> <li><code>sbyte</code>, <code>byte</code>, <code>short</code>, <code>ushort</code>, <code>uint</code>, <code>ulong</code></li> <li>provided that the constant-expression is within the range of the destination type</li></ul> <li><code>long</code> ++++&gt; <code>ulong</code> provided that the value of the constant-expression is not negative</li></ul> <li><em>constant expression</em></li> <ul> <li></li></ul> <li><strong><u>implicit conversions involving type parameters</u></strong> </li> <ul> <li>if <code>T</code> is a type paramenter, then</li> <li><code>T</code> ++++&gt; </li> <ul> <li>its effective base class <code>C</code></li> <li>any base class of <code>C</code></li> <li>any interface that <code>C</code> implements</li> <li>---</li> <li>any interface <code>I</code> in <code>T</code>'s effective interface set</li> <li>any base interface of <code>I</code></li> <li>---</li> <li>a type parameter <code>U</code> provided <code>T</code> depends on <code>U</code></li> <li>---</li> <li>a reference type of <code>R</code>&nbsp; provided</li> <ul> <li>it has an implicit conversion to a reference type <code>S</code> and</li> <li><code>S</code> has an identity conversion to <code>R</code></li></ul> <li>an interface type <code>I</code> provided</li> <ul> <li>it has an implicit conversion to an interface or delegate type <code>J</code> and </li> <li><code>J</code> is variance-convertible to <code>I</code></li></ul></ul> <li><code>null</code> literal ++++&gt; <code>T</code> provided <code>T</code> is a reference type</li> <li>comments:</li> <ul> <li>if <code>T</code> is a known reference type, these are all implicit reference conversions</li> <li>else, they are boxing conversions</li></ul></ul> <li><em>dependent type</em></li> <ul> <li></li></ul> <li><strong><u>user-defined implicit conversions</u></strong>  <ul> <li>consists of three parts  <li>optional standard implicit conversion  <li>user-defined implicit conversion operator  <li>optional standard implicit conversion</li></ul> <li><strong><u>anonymous function conversions and method group conversions</u></strong>  <ul> <li>these do not have types in and of themselves  <li>may be implicitly converted to delegate types OR expression-tree types</li></ul> <li><em>user-defined</em> <ul> <li>"Some conversions are defined by the language. Programs may also define their own conversions." (introduction)</li></ul> <li><em>predefined</em>  <ul> <li></li></ul></li></ul></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOnbf54.html?ReturnUrl=%2Fcsharp-implicit-conversions" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/csharp-implicit-conversions by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:14:30 GMT -->
+</html>

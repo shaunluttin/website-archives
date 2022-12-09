@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/we-re-all-just-muddling-thru/asp-net-vnext by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:19:15 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - N. Taylor Mullen: ASP.NET vNext</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="../modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="../rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="../index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="../Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>N. Taylor Mullen: ASP.NET vNext</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="../Tags/orchard-cms.html">orchard-cms</a>, <a href="../Tags/orchard-harvest.html">orchard-harvest</a>, <a href="../Tags/asp.html">asp.net</a>, <a href="../Tags/asp-4.html">asp.net-mvc</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Wednesday, June 11, 2014 5:12:14 PM</div>
+            </div>
+    </header>
+    <p><p>These are just my own notes.</p> <ul> <li>Learn to type faster. <li>Use Hyper-V to install VS 2014 CTP (don’t install side by side) <li>When in trouble, restart Visual Studio. <li>Learn OWIN.  <li>Startup.cs &gt; Order matters for configuration priority.</font></font>  <ul> <li>new Configuration()  <li>app.Map()  <li>app.Run()  <li>app.UseServices()  <li>app.UseMvc()</li></ul> <li>Configuration Files </li> <ul> <li>project.json &gt; does this replace csproj? </li> <ul> <li>dependencies &gt; use –* to get the most recent versions. <li>commands <li>configurations</li></ul> <li>config.json &gt; does this replace web.config?  <li>config.ini &gt; what does this replace? <li>global.json &gt; goes into solution items</li> <ul> <li>sources <li>this allows you to step into the sources</li></ul></ul> <li>Package manager log. </li> <ul> <li>Check this often to see what it’s importing</li></ul> <li>POCO Controllers  <ul> <li>Controllers do not have to implement the Controller class.  <li>Then use coding by convention; &lt;Named&gt;Controller.  <li>Then use DI to pull in Controller properties via, for instance:  <ul> <li>Constructor injection  <li>Property injection (just declare the property)</li></ul></li></ul> <li>Views &amp; View Components </li> <ul> <li>Use coding by convention; &lt;Named&gt;ViewComponent </li> <ul> <li>Invoke() <li>InvokeAsync()</li></ul> <li>Related to the &lt;Named&gt;Controller and &lt;Named&gt;.cshtml view.  <li>The view can have <code>@Component.Invoke()</code> in razor. <li>Views can also have async.</li></ul> <li>Command Line Programming</li> <ul> <li>Conemu (suggested console) <a title="http://sourceforge.net/projects/conemu/" href="http://sourceforge.net/projects/conemu/">http://sourceforge.net/projects/conemu/</a> <li>Self hosting through the console not with IIS.  <li>KVM <li>k web</li></ul></ul></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="../Users/Account/LogOn0d1b.html?ReturnUrl=%2Fwe-re-all-just-muddling-thru%2Fasp-net-vnext" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/we-re-all-just-muddling-thru/asp-net-vnext by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:19:16 GMT -->
+</html>

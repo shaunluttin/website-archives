@@ -1,0 +1,151 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/principles-of-object-oriented-design by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:13:49 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Principles of Object Oriented Design</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Principles of Object Oriented Design</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/design-patterns.html">design-patterns</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Saturday, December 17, 2016 2:45:00 AM</div>
+            </div>
+    </header>
+    <blockquote>
+  <p>DRAFT</p>
+</blockquote>
+
+<p>Some of the following are self-explanatory. Others require some explanation.</p>
+
+<ol>
+<li><strong>Encapsulate what varies.</strong> Restrict outside access to the details of routines that might need to change with changing requirements.</li>
+<li><strong>Program to interfaces not implementations.</strong></li>
+<li><strong>Prefer composition over inheritance.</strong></li>
+<li><strong>Strive for loosely coupled designs among objects that interact.</strong></li>
+<li><strong>Only talk to your friends.</strong> </li>
+<li><strong>Don't call us; we'll call you.</strong></li>
+<li><strong>Depend on abstractions not on concrete classes.</strong></li>
+<li><strong>Keep classes open to extension and closed to modification.</strong></li>
+<li><strong>A class should have only one reason to change.</strong></li>
+</ol>
+
+<p>Those fit into SOLID principles:</p>
+
+<ul>
+<li><strong>Single Responsibility</strong></li>
+<li><strong>Open-closed</strong></li>
+<li><strong>Liskov Substitution</strong></li>
+<li><strong>Interface Segregation</strong></li>
+<li><strong>Dependency Inversion</strong></li>
+</ul>
+
+<p>Then there are the </p>
+
+<ul>
+<li><strong>Law of Demeter.</strong> This is known as the <em>Principle of Least Knowledge</em> and is often stated as <em>only talk to your friends.</em> For instance, if your friend Suzie introduces you to John, do not ask John to do something for you. Instead, make friends with John before asking him any favours. <code>s.j.DoSomething()</code> breaks the law; <code>j.DoSomething()</code> follows the it. When we call <code>DoSomething()</code> directly thru John, our client code touches fewer components, and by passing thru fewer components, our client code has less if not the least knowledge of the system.</li>
+<li><strong>Design by Contract</strong> </li>
+<li><strong>Don't Repeat Yourself</strong></li>
+</ul>
+
+<p>See also</p>
+
+<ul>
+<li>http://www.slideshare.net/intellizhang/the-oo-design-principles</li>
+</ul>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOnaec6.html?ReturnUrl=%2Fprinciples-of-object-oriented-design" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/principles-of-object-oriented-design by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:13:49 GMT -->
+</html>

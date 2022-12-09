@@ -1,0 +1,191 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/a-makeshift-javascript-repl-editor-with-notepad-and-phantomjs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:16:19 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - A Makeshift JavaScript REPL Editor with Notepad and PhantomJS</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>A Makeshift JavaScript REPL Editor with Notepad and PhantomJS</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/windows.html">windows</a>, <a href="Tags/javascript.html">javascript</a>, <a href="Tags/phantomjs.html">phantomjs</a>, <a href="Tags/powershell.html">powershell</a>, <a href="Tags/vim.html">vim</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Thursday, April 2, 2015 5:23:00 PM</div>
+            </div>
+    </header>
+    <p>What I wanted was a simple JavaScript console, that's similar to the Firefox Web Console but with the lightness and convenience of the PowerShell ISE.</p>
+
+<p>The result is a kind of cross between a read-evaluate-print-loop and an integrated scripting environment. Here are its advantages.</p>
+
+<ol>
+<li>It enables exploratory programming and debugging, without having to open the Firefox Web Console.</li>
+<li>It runs <code>XMLHttpRequest</code> without having to set up a proxy, because PhantomJS is a browser. </li>
+<li>It works with any text editor from Notepad to Vim.</li>
+<li>We can test cross-origin requests from our local machine, and also inspect them with <a href="http://www.telerik.com/fiddler">Fiddler</a>.</li>
+</ol>
+
+<p>There are also some limitations. </p>
+
+<ol>
+<li>We don't have the DOM. Exploration and debugging is limited to stuff that doesn't involve the DOM.</li>
+<li>We just have JavaScript. It might be tricky to import libraries such as jQuery or AngularJS.</li>
+</ol>
+
+<p>In any case, I find it useful. Here's the solution.</p>
+
+<h1>Install PhantomJS</h1>
+
+<p>You can install <a href="http://phantomjs.org/">PhantomJS</a> in a variety of ways. This is one of them. It requires <a href="http://chocolatey.org/">Chocolaty</a>.</p>
+
+<p>(1) Open PowerShell.</p>
+
+<p>(2) Run <code>choco install phantomjs</code>. </p>
+
+<p>The PhantomJS executable will be in <code>C:\ProgramData\chocolatey\bin</code> and will also be in the PATH.</p>
+
+<h1>with Notepad and the Command Line</h1>
+
+<p>I typed up <a href="http://stackoverflow.com/a/29418792/1108891">a simpler version of this for a StackOverflow answer here</a>. Here's how I usually do it on my machine.</p>
+
+<p>(3) Run <code>echo. &gt; myfiddle.js</code> to create a JavaScript file (the <code>.</code> means no content.)</p>
+
+<p>(4) Run <code>notepad myfiddle.js</code> to open it with Notepad.</p>
+
+<p>(5) Add the following and save.</p>
+
+<pre><code>console.log('foo');
+</code></pre>
+
+<p>(6) Switch back to the command line. Run <code>phantomjs myfiddle.js</code>. </p>
+
+<p>(7) The <code>console.log</code> result will appear. </p>
+
+<p>(8) Press <code>Ctrl + C</code> to exit Phantom.</p>
+
+<p>(9) Repeat as necessary.</p>
+
+<p>From the screenshot, you can see that we're able to use XMLHttpRequest without having to setup anything else. That means we can inspect the request with <a href="http://www.telerik.com/fiddler">Fiddler</a>!</p>
+
+<p><img src="Media/Default/BlogImages/javascript-ise.png" alt="JavaScript ISE" /></p>
+
+<h1>with Vim and Command Line</h1>
+
+<p>(3) Run <code>choco install vim</code> </p>
+
+<p>(4) Run <code>gvim myfiddle.js</code></p>
+
+<p>This creates <code>myfiddle.js</code> in the current directory and opens it for editing in Vim.</p>
+
+<p>(5) Now in gVim, add the following script.</p>
+
+<p>console.log('foo');</p>
+
+<p>(6) Save the file.</p>
+
+<pre><code>:w
+</code></pre>
+
+<p>(7) Run it with PhantomJS. You'll see the console output.</p>
+
+<pre><code>:! phantomjs myfiddle.js 
+</code></pre>
+
+<ol start="8">
+<li><p>Close PhantomJS.</p></li>
+<li><p>Lather, rinse, repeat.</p></li>
+</ol>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn9f27.html?ReturnUrl=%2Fa-makeshift-javascript-repl-editor-with-notepad-and-phantomjs" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/a-makeshift-javascript-repl-editor-with-notepad-and-phantomjs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:16:20 GMT -->
+</html>

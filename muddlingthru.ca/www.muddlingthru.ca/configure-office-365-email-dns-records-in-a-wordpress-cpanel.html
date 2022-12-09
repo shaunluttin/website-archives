@@ -1,0 +1,141 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/configure-office-365-email-dns-records-in-a-wordpress-cpanel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:52 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Configure Office 365 Email DNS records in a WordPress CPanel</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Configure Office 365 Email DNS records in a WordPress CPanel</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/wordpress.html">wordpress</a>, <a href="Tags/dns.html">dns</a>, <a href="Tags/office-365.html">office-365</a>, <a href="Tags/email.html">email</a>, <a href="Tags/ms-exchange-server.html">ms-exchange-server</a>, <a href="Tags/sharepoint.html">sharepoint</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Friday, February 26, 2016 9:18:14 PM</div>
+            </div>
+    </header>
+    <p><p><strong>Step One.</strong> Login to the CPanel. </p> <p><strong>Step Two.</strong> For TXT and CNAME records, in the CPanel’s Domains section, click on <u>Advanced DNS Zone Editor</u>. Add the following records. </p><pre>foobar.ca              3600 TXT   v=spf1 include:spf.protection.outlook.com –all
+msoid.foobar.ca        3600 CNAME clientconfig.microsoftonline-p.net
+autodiscover.foobar.ca 3600 CNAME autodiscover.outlook.com 
+</pre></p>
+
+<p><strong></strong>&nbsp;</p>
+
+<p><p><strong>Step Three.</strong> For MX records, in the CPanel’s Mail section, choose <u>MX Entry</u>. Then choose Automatically Detect Configuration. Then add the following record.</p><pre>0     foobar-ca.mail.protection.outlook.com
+</pre></p>
+
+<p><font style="background-color: #ffff00"></font>&nbsp;</p>
+
+<p><font style="background-color: #ffff00">Remember to save at each step.</font><strong> <img class="wlEmoticon wlEmoticon-smile" style="border-top-style: none; border-left-style: none; border-bottom-style: none; border-right-style: none" alt="Smile" src="Media/Default/Windows-Live-Writer/Using-dig.exe-on-Windows_AF19/wlEmoticon-smile_2.png"></strong></p>
+
+<p><strong></strong>&nbsp;</p>
+
+<p><strong>Screenshots</strong></p>
+
+<p><a href="Media/Default/Windows-Live-Writer/Using-dig.exe-on-Windows_AF19/dns-records.png"><img title="dns-records" style="display: inline" alt="dns-records" src="Media/Default/Windows-Live-Writer/Using-dig.exe-on-Windows_AF19/dns-records_thumb.png" width="240" height="201"></a></p>
+
+<p><a href="Media/Default/Windows-Live-Writer/Using-dig.exe-on-Windows_AF19/mx-record_1.png"><img title="mx-record" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="mx-record" src="Media/Default/Windows-Live-Writer/Using-dig.exe-on-Windows_AF19/mx-record_thumb_1.png" width="192" height="244"></a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>What does it all mean?</strong> <a href="https://support.office.com/en-us/article/Create-DNS-records-for-Office-365-at-any-DNS-hosting-provider-7B7B075D-79F9-4E37-8A9E-FB60C1D95166">This Office 365 email article</a> explains the role of each of these records. Here is the Reader’s Digest version.</p>
+
+<ul>
+<li>MX Record. Tell email send to <a href="mailto:anyone@foobar.ca">anyone@foobar.ca</a> to go to Office 365.</li>
+<li>TXT Record. The `spf` record prevents spam email.</li>
+<li>CNAME. The `autodiscover` helps with the setup of Outlook desktop clients. </li>
+<li>CNAME. The `msoid` helps authentication for various client apps (e.g. Skype.)</li></ul>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn64c7.html?ReturnUrl=%2Fconfigure-office-365-email-dns-records-in-a-wordpress-cpanel" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/configure-office-365-email-dns-records-in-a-wordpress-cpanel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:58 GMT -->
+</html>

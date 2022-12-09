@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/how-to-handle-the-virtual-directory-when-developing-locally by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:20:58 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - How to handle the virtual directory when developing locally?</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>How to handle the virtual directory when developing locally?</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/orchard-cms.html">orchard-cms</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Tuesday, July 8, 2014 5:34:49 AM</div>
+            </div>
+    </header>
+    <p><h2>Answer</h2> <p>Don't use a virtual directory. Remove it from the project’s properties in VS or set up in full IIS as a Website (not Virtual Directory). Credit to <a href="http://www.linkedin.com/in/stevetayloruk">Steve Taylor</a>.</p> <h3>Setup a new Website in IIS.</h3> <p>IIS &gt; Connections &gt; Sites &gt; Add Website &gt; Fill in the fields.</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_8.png"><img title="image" style="display: inline" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_thumb_3.png" width="240" height="231"></a></p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_2.png"><img title="image" style="margin: 0px; display: inline" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_thumb.png" width="191" height="240"></a></p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_4.png"><img title="image" style="display: inline" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_thumb_1.png" width="240" height="74"></a></p> <h3>Then, Configure Orchard in Visual Studio to use that Website.</h3> <p>Orchard.Web &gt; Properties &gt; Web &gt; Fill in the fields.</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_6.png"><img title="image" style="margin: 0px; display: inline" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/Windows-Live-Writer/How-to-handle-the-virtual-directory-when_13CF5/image_thumb_2.png" width="240" height="174"></a></p> <h2>Original Question</h2> <p>The problem is, when we upload an image from the live site, the <code>img.src</code> looks like <code>src="/Media/Default/Some<em>Folder/some</em>image.jpg"</code>, whereas when we upload it from dev site, it looks like <code>src="/Orchard.Web/Media/Default/Some<em>Folder/some</em>image.jpg"</code>, where <code>Orchard.Web</code> is the virtual directory.</p> <p>This makes it a pain to use the same images on the live and dev sites, because we must add/remove the virtual directory to/from all the <code>img.src</code> paths.</p> <h2>Further Questions:</h2> <ol> <li>Is this by design or a bug?  <li>If it is by design, what is the motivation, and is there a workaround?  <li>If it is a bug, then can I sign up to fix it? </li></ol> <h2>See also</h2> <p><a title="https://orchard.codeplex.com/discussions/550898" href="https://orchard.codeplex.com/discussions/550898">https://orchard.codeplex.com/discussions/550898</a></p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOn3e15.html?ReturnUrl=%2Fhow-to-handle-the-virtual-directory-when-developing-locally" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/how-to-handle-the-virtual-directory-when-developing-locally by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:21:04 GMT -->
+</html>

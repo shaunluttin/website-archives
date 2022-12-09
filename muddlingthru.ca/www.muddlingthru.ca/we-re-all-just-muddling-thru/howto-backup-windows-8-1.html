@@ -1,0 +1,270 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/we-re-all-just-muddling-thru/howto-backup-windows-8-1 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:26:47 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - HowTo: Backup Windows 8.1</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="../Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="../modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="../rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="../index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="../Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>HowTo: Backup Windows 8.1</h1>
+
+
+            <div class="metadata">
+                <div class="published">Thursday, March 20, 2014 6:57:00 PM</div>
+            </div>
+    </header>
+    <p>There are two main options for a Windows 8.1 backup:</p>
+
+<ul>
+<li>File History.</li>
+<li>System Image.</li>
+</ul>
+
+<p>We will look at each of them. Let's start with File History, because it's the most important and useful.</p>
+
+<h3>File History</h3>
+
+<p>File History creates a backup of your personal data. It creates snapshots of your files whenever they change, and it stores incremental versions of those files on an external hard drive. You can then flip through the history of your files and restore any one of them to how it was at any particular point in time. This is a terrific way of both backing up and preserving-the-evolution of your personal files.</p>
+
+<h4>How do I turn on file history?</h4>
+
+<ol>
+<li>Plug in an external hard disk drive. You can buy one from Brendan at <a href="http://saltspringcomputer.com/">Salt Spring Computer</a>.</li>
+<li>From within the Windows 8.1 Start Screen, type "File History"</li>
+<li>In the search results, click "File History settings"</li>
+<li>The File History Settings pane will open.</li>
+<li>Turn it "On"</li>
+<li>Point it at your external hard disk drive.</li>
+<li>You will see a notice that says, "File History is backing up your files."</li>
+<li>Good. You're done.</li>
+<li>File History will now automatically backup your files, on a regular basis (even for a while when your external drive is not connected).</li>
+</ol>
+
+<h4>What does file history backup?</h4>
+
+<p>File history backs up everything in the following locations:</p>
+
+<ul>
+<li>Desktop Folder</li>
+<li>Favorites Folder</li>
+<li>Contacts Folder</li>
+<li>The Default Libraries, which include these Libraries:<br />
+<ul>
+<li>Music Library</li>
+<li>Videos Library</li>
+<li>Documents Library</li>
+<li>Pictures Library</li>
+<li>Downloads Library</li>
+</ul>
+</li>
+<li style="text-decoration: line-through;">Custom Libraries</li>
+</ul>
+
+<p>Note: Backing up Custom Libraries is possible but it can be buggy. That is, I have made it work but I cannot yet guarentee its reliability.</p>
+
+<h4>How do I restore a file from File History?</h4>
+
+<p>To restore your files, first open File History. Here are two methods:</p>
+
+<h5>Method A</h5>
+
+<ol>
+<li>From within the Windows 8 Start Screen, type "Restore"</li>
+<li>Click "Restore your files with File History."</li>
+<li>File History will open at its root location (i.e. at a birds-eye-view of its contents).</li>
+</ol>
+
+<h5>Method B</h5>
+
+<ol>
+<li>From within the Windows File Explorer, click on any file or folder that is part of File History (e.g. Documents).</li>
+<li>In the File Explorer ribbon, click the Home tab, and in its Open secion, click the History button (it looks like a folder with a clock.)</li>
+<li>File history will open at that location.</li>
+</ol>
+
+<p>Once you have File History open, use its navigation, that is located at the bottom of the window, and which includes a big, green button between big forward and backward arrows.</p>
+
+<p>Click the backward arrow to view earlier versions of files and folders. Click the forward arrow to return to the present. The big green button means, "restore to its original location." So, once you find something that you'd like to restore, select the file or folder, and then press the big green button. That will restore the item to its original location.</p>
+
+<p>Right clicking a file or folder in File History displays further options. You can preview content or restore an item to a particular location instead of to its original location. Restoring something to a particular location comes in handy if you want to restore something while also using its current version.</p>
+
+<h4>How often does File History backup my files?</h4>
+
+<ul>
+<li>By default, File History saves a copy of your files every hour.</li>
+<li>You can see this for yourself (and change this) in the Advanced Settings.</li>
+</ul>
+
+<h4>For how long does File History keep my files?</h4>
+
+<ul>
+<li>By default, File History keeps saved versions of your files forever.</li>
+<li>You can see this for yourself (and change this) in the Advanced Settings.</li>
+</ul>
+
+<h4>If it saves my files every hour and keeps them forever, doesn't File History use an giganticly enormous amount of memory?</h4>
+
+<ul>
+<li>No. Every time File History saves a file, it only saves what changed, it doesn't re-save the entire file.</li>
+<li>An anology is that, if you grew an inch, we would just raise the mark on the wall up one inch.</li>
+</ul>
+
+<h4>What does File History do when my drive is not connected?</h4>
+
+<ul>
+<li>When your external drive is not connected, file history uses your built in hard drive to backup files.</li>
+<li>When you reconnect your external drive, File History transfers this local cache to the external drive.</li>
+<li>So, File History works both when your external drive is connect and for a while when it isn't connected.</li>
+<li>You can set the amount of your built in drive that File History uses in Advanced Settings (it's called "Size of offline cache.")</li>
+</ul>
+
+<h4>How do I open Advanced Settings?</h4>
+
+<ol>
+<li>From within the Windows 8 Start Screen, type "File History"</li>
+<li>Click the "File History" search result.</li>
+<li>The File History control panel will open.</li>
+<li>Click on the Advanced settings link (on the left side).</li>
+<li>Here you can view and/or set how often File History will save copies, how much of your build-in hard drive it uses, and for how long it keeps your backed-up files.</li>
+</ol>
+
+<h4>What happens if I switch the device that I plug into my designated USB drive?</h4>
+
+<ul>
+<li>If you switch the device that you plug into your USB Drive,</li>
+<li>Windows will assign a new drive letter to the device.</li>
+<li>So, you will have to point File History at the new drive letter.</li>
+</ul>
+
+<h4>Where does file history store itself?</h4>
+
+<p>This is for geeks only. View the backup here:&nbsp;"G:\FileHistory", where G:\ is your external drive. Most users will not want to view their files this way. Most uses also don't need to create a System Image, but here is an explaination anyway.</p>
+
+<h3>Create a System Image</h3>
+
+<p>File History is good for backing up and restoring your personal data as needed; on the other hand, a System Image is good for backing up your entire computer (everything) and restoring it wholesale when your hard drive crashes (and your hard drive will crash). It's probably good enough to use just File History, but sometimes you might want a System Image. For instance, if you're about to do something that might destroy your hard drive, such as updating its firmware, then first create a system image.</p>
+
+<ol>
+<li>Plug in an external hard disk drive.</li>
+<li>From the start screen, type "File history" (yup, we go through File History).</li>
+<li>Click the "File History" result (not the "File History Settings" result).</li>
+<li>The File History Control Panel will open.</li>
+<li>In the bottom left, click System Image Backup link.</li>
+<li>The Create a system image window will open.</li>
+<li>A progress bar will also run for a while.</li>
+<li>Then the "Create a system image" window will show asking where you want to save your backup.</li>
+<li>Choose the external hard disk drive that you connected in step one of these instructions (you could also use some DVDs).</li>
+<li>Click next.</li>
+<li>Choose the drives that you want to include in the backup. I just accept the defaults.</li>
+<li>Click next.</li>
+<li>Read the warnings and then click Start the backup.</li>
+<li>The backup will take somewhere are 15 minutes to an hour.</li>
+</ol>
+
+<h3>Resources</h3>
+
+<p><a href="http://www.hanselman.com/blog/Windows8Step0TurnOnContinuousBackupsViaFileHistory.aspx">Windows 8, Step 0 - Turn on continuous backups via File History</a></p>
+
+<p><a href="http://www.hanselman.com/blog/CreateACompleteSystemImageBackupWithWindows81AndFileHistory.aspx">Create a complete System Image Backup with Windows 8.1 and File History</a></p>
+
+<p><a href="http://www.hanselman.com/blog/ABasicNoncloudbasedPersonalBackupStrategy.aspx">A basic non-cloud-based personal backup strategy</a></p>
+
+<p><a href="http://technet.microsoft.com/en-us/magazine/dn448546.aspx">Windows 8: File History explained</a></p>
+
+<p><a href="http://blogs.technet.com/b/heyscriptingguy/archive/2012/11/11/weekend-scripter-working-with-windows-libraries.aspx">Weekend Scripter: Working with Windows Libraries</a></p>
+
+<p><a href="http://technet.microsoft.com/en-us/magazine/dn456537.aspx">Windows 8: Protect your files</a></p>
+
+<p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="../Users/Account/LogOn571d.html?ReturnUrl=%2Fwe-re-all-just-muddling-thru%2Fhowto-backup-windows-8-1" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="../Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/we-re-all-just-muddling-thru/howto-backup-windows-8-1 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:26:47 GMT -->
+</html>

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html> 
+<html lang="en-US" class="static detail-blog-post dir-ltr contents" dir="ltr"> 
+
+<!-- Mirrored from www.muddlingthru.ca/orchard-performance-tuning-checklist by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:27 GMT -->
+<head> 
+    <meta charset="utf-8" />
+    <title>Muddling Thru - Orchard Performance Tuning Checklist</title> 
+    <link href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_Base/Styles/base.css" rel="stylesheet" type="text/css" />
+<link href="Themes/Bootstrap_3_3_4_SimpleBlog/Styles/theme.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="/Core/Shapes/scripts/html5.js" type="text/javascript"></script>
+<![endif]-->
+<meta content="Orchard" name="generator" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<link href="modules/orchard.themes/Content/orchard.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link rel="alternate" type="application/rss+xml" title="Muddling Thru" href="rss91cc?containerid=12" />
+
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script> 
+    <script>window.isRTL = false;</script>
+</head> 
+<body>
+
+
+<div class="aside-1" id="layout-wrapper">
+<header id="layout-header" class="group">
+    <div id="header">
+        <div class="zone zone-header"><h1 id="branding"><a href="index.html">Muddling Thru</a></h1>
+</div>
+    </div>
+</header>
+<div id="layout-navigation" class="group">
+    <div class="zone zone-navigation">
+<article class="widget-navigation widget-menu-widget widget">
+    
+<nav>
+    <ul class="menu menu-main-menu">
+        
+        
+    </ul>
+</nav>
+</article>
+<article class="widget-navigation widget-html-widget widget">
+    <p>Welcome to&nbsp;<a href="http://www.shaunluttin.com/">Shaun Luttin's</a> public notebook. It contains rough, practical notes. The guiding idea is that, despite what marketing tells us, there are no experts at anything. Sharing our half-baked ideas helps everyone. <strong>We're all just muddling thru</strong>. Find out more about our work at <a href="http://www.bigfont.ca/">bigfont.ca.</a></p>
+</article></div>
+</div>
+<div id="layout-main-container">
+<div id="layout-main" class="group">
+    <aside id="aside-first" class="aside-first group">
+        <div class="zone zone-aside-first">
+<article class="widget-aside-first widget-search-form widget">
+    
+<form action="http://www.muddlingthru.ca/Search" class="search-form form form-inline" method="get">    <fieldset>
+        <input class="form-control input-lg" id="q" name="q" placeholder="Search" type="text" value="" />
+        <button class="btn btn-default btn-lg" type="submit">Search!</button>
+    </fieldset>
+</form>
+</article>
+<article class="widget-aside-first widget-html-widget widget">
+    <p><img class="img-thumbnail" alt="" src="Media/Default/Website-UI-Uploads/business_happy_200x200.jpg" height="200" width="200" /></p>
+</article></div>
+    </aside>
+    <div id="layout-content" class="group">
+                        <div id="content" class="group">
+            <div class="zone zone-content">
+<article class="blog-post content-item">
+    <header>
+        
+
+<h1>Orchard Performance Tuning Checklist</h1>
+
+    <p class="tags">
+        <span>Tags:</span>
+<a href="Tags/orchard-cms.html">orchard-cms</a>    </p>
+
+            <div class="metadata">
+                <div class="published">Friday, August 15, 2014 6:59:02 PM</div>
+            </div>
+    </header>
+    <p><h1>Must Have</h1> <ul> <li>Set debug=”false” in web.config</li> <li>Use a precompiled build.</li> <ul> <li>…from a developer command prompt with build precompiled</li> <li>…from Visual Studio’s Publish dialog.</li></ul> <li>Use release configuration</li> <li>Disable unused modules.</li></ul> <h1>Should Have</h1> <ul> <li>Delete unused modules (be careful with dependencies) before compilation.</li> <li>Enable these Features</li> <ul> <li>Performance &gt; Combinator (Configure in Settings &gt; Combinator)</li> <li>Performance &gt; Orchard.Caching (no configuration)</li> <li>Performance &gt; Output Cache (Configure in Settings &gt; Cache)</li> <li>Performance &gt; SysCache (no configuration)</li> <li>Hosting &gt; Warmup (Configure in Settings &gt; Performance)</li></ul></ul> <h1>Nice to Have</h1> <ul> <li>Use SQL Server not SQLCe</li> <li>Enable these Features</li> <ul> <li>MS Azure Database Cache</li> <li>MS Azure Output Cache</li> <li>Keep Alive (if idle timeout is an issue)</li></ul></ul> <h1>Appendix : Some of our standard settings</h1> <p>If it isn’t noted here, we use default settings for each feature (e.g. We use Combinator defaults)</p> <h2>Output Cache Settings</h2> <p>We set the cache to last one year (in seconds). Everything else is default.</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_10.png"><img title="image" style="border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; display: inline" border="0" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_thumb_4.png" width="244" height="167"></a> </p> <h2>Warmup Settings</h2> <p>We generate warm-up pages every 90-minutes.</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_8.png"><img title="image" style="border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; display: inline" border="0" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_thumb_3.png" width="244" height="201"></a> </p> <h2>Visual Studio Publish Settings</h2> <p>Package/Publish Web (Orchard.Web &gt; right click &gt; Properties)</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_2.png"><img title="image" style="border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; display: inline" border="0" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_thumb.png" width="244" height="162"></a> </p> <p>Publish Web &gt; Settings (Orchard.Web &gt; right click &gt; Publish &gt; Settings)</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_4.png"><img title="image" style="border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; display: inline" border="0" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_thumb_1.png" width="244" height="144"></a> </p> <p>Advanced Precompile Options</p> <p><a href="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_6.png"><img title="image" style="border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; display: inline" border="0" alt="image" src="../muddlingthru.azurewebsites.net/Media/Default/WindowsLiveWriter/OrchardPerformanceTuningChecklist_A340/image_thumb_2.png" width="228" height="244"></a> </p> <h3></h3> <h1>Resources</h1> <p><a title="http://orcharddojo.net/orchard-resources/Library/DevelopmentGuidelines/OrchardPerformanceOptimization" href="http://orcharddojo.net/orchard-resources/Library/DevelopmentGuidelines/OrchardPerformanceOptimization">http://orcharddojo.net/orchard-resources/Library/DevelopmentGuidelines/OrchardPerformanceOptimization</a></p> <p><a title="http://azure.microsoft.com/blog/2014/01/21/orchard-cms-with-azure-cache-on-windows-azure-websites-waws/" href="http://azure.microsoft.com/blog/2014/01/21/orchard-cms-with-azure-cache-on-windows-azure-websites-waws/">http://azure.microsoft.com/blog/2014/01/21/orchard-cms-with-azure-cache-on-windows-azure-websites-waws/</a></p> <p><a title="http://msdn.microsoft.com/en-us/library/aa983464%28v=vs.110%29.aspx" href="http://msdn.microsoft.com/en-us/library/aa983464(v=vs.110).aspx">http://msdn.microsoft.com/en-us/library/aa983464%28v=vs.110%29.aspx</a></p> <p><a title="http://msdn.microsoft.com/en-us/library/dd410108%28v=vs.110%29.aspx" href="http://msdn.microsoft.com/en-us/library/dd410108(v=vs.110).aspx">http://msdn.microsoft.com/en-us/library/dd410108%28v=vs.110%29.aspx</a></p> <p><a title="http://msdn.microsoft.com/en-us/library/hh475319%28v=vs.110%29.aspx" href="http://msdn.microsoft.com/en-us/library/hh475319(v=vs.110).aspx">http://msdn.microsoft.com/en-us/library/hh475319%28v=vs.110%29.aspx</a></p> <p><a title="http://technet.microsoft.com/en-us/library/cc731903%28v=ws.10%29.aspx" href="http://technet.microsoft.com/en-us/library/cc731903(v=ws.10).aspx">http://technet.microsoft.com/en-us/library/cc731903%28v=ws.10%29.aspx</a></p> <p></p> <p></p> <p></p> <p></p> <p><a title="http://stackoverflow.com/questions/14041875/slow-orchard-performance-on-windows-azure" href="http://stackoverflow.com/questions/14041875/slow-orchard-performance-on-windows-azure">http://stackoverflow.com/questions/14041875/slow-orchard-performance-on-windows-azure</a></p></p>
+
+</article></div>
+        </div>
+            </div>
+</div>
+</div>
+<div id="layout-footer" class="group">
+    <footer id="footer">
+        <div id="footer-quad" class="group">
+                                            </div>
+        <div id="footer-sig" class="group">
+            <div class="zone zone-footer"><div class="credits">
+    <span class="poweredby">Powered by <a href="http://www.orchardproject.net/" target="_blank">Orchard</a></span>
+    <span class="copyright">&#169; Bootstrap 3.3.4 Simple Blog 2015.</span>
+</div>
+<div class="user-display">
+        <span class="user-actions"><a href="Users/Account/LogOnef63.html?ReturnUrl=%2Forchard-performance-tuning-checklist" rel="nofollow">Sign In</a></span>
+</div></div>
+        </div>
+    </footer>
+</div>
+</div>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/base.js" type="text/javascript"></script>
+<script src="Themes/Bootstrap_3_3_4_Base/scripts/theme.js" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.muddlingthru.ca/orchard-performance-tuning-checklist by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Dec 2022 06:17:46 GMT -->
+</html>

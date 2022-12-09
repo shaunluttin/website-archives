@@ -1,0 +1,13 @@
+<manifest xmlns="http://schemas.microsoft.com/wlw/manifest/weblog">
+  <options>
+    <supportsAutoUpdate>Yes</supportsAutoUpdate>
+    <clientType>Metaweblog</clientType>
+    <supportsKeywords>Yes</supportsKeywords>
+    <supportsCategories>No</supportsCategories>
+    <supportsFileUpload>Yes</supportsFileUpload>
+    <supportsCustomDate>Yes</supportsCustomDate>
+    <supportsSlug>Yes</supportsSlug>
+    <supportsGetTags>Yes</supportsGetTags>
+    <keywordsAsTags>Yes</keywordsAsTags>
+  </options>
+</manifest>

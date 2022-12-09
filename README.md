@@ -8,3 +8,5 @@ Archived with https://www.httrack.com/
 4. Use the default options.
 
 That's it!
+
+We deploy these to these CloudFlare Pages: https://website-archives.pages.dev

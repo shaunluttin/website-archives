@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.singularbiogenics.com	TRUE	/	FALSE	1999999999	ARRAffinity	6254d73fb8a62cbec5cacbf4980672aa342388baf737c062350e1dfec012e110
+www.singularbiogenics.com	TRUE	/	FALSE	1999999999	__RequestVerificationToken	qxgTY5QihVAvG9AvPvMuq4vF5LtaJ1ngaCGYQYV9aT4KU_0mdLfHvPUqMLaPRGx_uh9xYMdz0s0KL9wC8_OyTdw_V5baGlWrmkeMrl97cjQ1
+

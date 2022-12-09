@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+03:17:52	125/125	---M--	404	error ('Not%20Found')	text/html	date:Fri,%2009%20Dec%202022%2011:17:50%20GMT	http://singularbiogenics.com/robots.txt		(from )
+03:17:52	67/67	---M--	301	error ('Moved%20Permanently')	text/html	date:Fri,%2009%20Dec%202022%2011:17:51%20GMT	http://singularbiogenics.com/	C:/dev/shaunluttin/website-archives/singular-biogenics/singularbiogenics.com/index.html	(from )

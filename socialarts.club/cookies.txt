@@ -1,0 +1,8 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+socialarts.club	TRUE	/	FALSE	1999999999	ARRAffinity	6254d73fb8a62cbec5cacbf4980672aa342388baf737c062350e1dfec012e110
+socialarts.club	TRUE	/	FALSE	1999999999	ARRAffinitySameSite	6254d73fb8a62cbec5cacbf4980672aa342388baf737c062350e1dfec012e110
+socialarts.club	TRUE	/	FALSE	1999999999	SameSite	None
+socialarts.club	TRUE	/	FALSE	1999999999	.AspNetCore.Antiforgery.w5W7x28NAIs	CfDJ8K0gHFOQAqFJu7T4ac5nDLBUX4UAOuGw7J8jB7njypO3nYhGdLiNnjm6u8Gh3y0O4ZsEgebU0nrfPUEnkAjWVcx2GZqL8XxT3lU6jgHrcNUzDDRzD0-H20XgYN_gLTq39-Js6pjAoIhnd_yoK1fUVkI
+socialarts.club	TRUE	/	FALSE	1999999999	samesite	lax
+

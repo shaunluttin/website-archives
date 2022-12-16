@@ -1,9 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-www.muddlingthru.ca	TRUE	/	FALSE	1999999999	ARRAffinity	6254d73fb8a62cbec5cacbf4980672aa342388baf737c062350e1dfec012e110
-gist.github.com	TRUE	/	FALSE	1999999999	_gh_sess	DFKq2twCbxGeG6xx3MJcT26XocZWnHr3EzFwW2tDYhnoJOxfUqs68CZdj2DjO5B7BRCJjAYZ5nb1UtIsdVmKtoWS8CNjTn7lMDsWxZCc%2BfFZm9%2FByd6pV9xHfjUiWhYbUyJXwJFZLgGqzmqf0sWEL3BqKH70NYvdD1eAkA%2FYvMg0%2FcS3nM0KCCpUGE0NlzIcSVT3w%2BhCoUE0g2eASsCB%2BNZzcoJVlmOGBGqL1VrjIXY%2B9VNi0Y9K%2Fo7KetCxRmbZRWLRfEepP09w8%2F4KTg3KBw%3D%3D--qgeuUq5nmRjvsuaj--I7RheflscQ9INUdAF4e4XQ%3D%3D
-github.com	TRUE	/	FALSE	1999999999	_octo	GH1.1.602131846.1670566501
-github.com	TRUE	/	FALSE	1999999999	logged_in	no
-gist.github.com	TRUE	/	FALSE	1999999999	SameSite	Lax
-muddlingthru.azurewebsites.net	TRUE	/	FALSE	1999999999	ARRAffinity	6254d73fb8a62cbec5cacbf4980672aa342388baf737c062350e1dfec012e110
-
